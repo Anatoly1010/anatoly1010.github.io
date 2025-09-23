@@ -1,20 +1,12 @@
 ---
-title: "Teaching experience 1"
+title: "Introduction to Magnetic Resonance"
 collection: teaching
-type: "Undergraduate course"
+type: "Semester-long course of lectures and seminars"
 permalink: /teaching/2014-spring-teaching-1
-venue: "University 1, Department"
-date: 2014-01-01
-location: "City, Country"
+venue: "Novosibirsk State University, Department of Natural Sciences"
+date: 2021-01-01
+location: "Novosibirsk, Russia"
 ---
 
-This is a description of a teaching experience. You can use markdown like any other post.
-
-Heading 1
-======
-
-Heading 2
-======
-
-Heading 3
-======
+- Semester-long course of lectures and seminars on magnetic resonance for graduate students. 
+- From 2022 to the present moment.

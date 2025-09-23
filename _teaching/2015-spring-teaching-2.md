@@ -1,20 +1,12 @@
 ---
-title: "Teaching experience 2"
+title: "Structure of Matter"
 collection: teaching
-type: "Workshop"
-permalink: /teaching/2015-spring-teaching-1
-venue: "University 1, Department"
-date: 2015-01-01
-location: "City, Country"
+type: "Annual course of lectures and seminars"
+permalink: /teaching/2015-spring-teaching-2
+venue: "Novosibirsk State University, Department of Natural Sciences"
+date: 2022-01-01
+location: "Novosibirsk, Russia"
 ---
 
-This is a description of a teaching experience. You can use markdown like any other post.
-
-Heading 1
-======
-
-Heading 2
-======
-
-Heading 3
-======
+- Fundamental annual course on the structure of matter for third-year students. 
+- From 2022 to the present moment.
