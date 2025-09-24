@@ -1,17 +1,16 @@
 ---
 permalink: /
-title: "Hi there!"
+title: "About me"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-I am currently a Senior Researcher at EPR laboratory of International Tomography Center, Novosibirsk, Russian Federation.
-I am a main developer of <a href="https://github.com/Anatoly1010/Atomize">Atomize</a>, modular open-source software for control and automation of scientific and industrial instruments.
-I am currently an Associate Editor for the <a href="https://openresearchsoftware.metajnl.com/about/editorialteam">Journal of Open Research Software</a> and reviewer for some scientific journals.
+I am currently a Senior Researcher at EPR laboratory of International Tomography Center, Novosibirsk, Russian Federation. My research interest includes photochemistry, EPR spectroscopy, THz radiation, software development, and molecular magnetism. My current research focuses on the effects of pulsed THz radiation on molecular magnets and development of universal software for controlling multifunctional setups. Currently, my main project is focused on the development of fundamental and technical aspects of controlling the spin state of single-molecule magnets by applying resonant pulsed microwave and terahertz radiation to their spin system.
 
-My research interest includes photochemistry, EPR spectroscopy, THz radiation, software development, and molecular magnetism. My current research focuses on the effects of pulsed THz radiation on molecular magnets and development of universal software for controlling multifunctional setups.
+I also enjoy coding and am a main developer of <a href="https://github.com/Anatoly1010/Atomize">Atomize</a>, modular open-source software for control and automation of scientific and industrial instruments. In addition to my scientific activities, I dedicate a significant amount of time to teaching and reviewing for scientific journals. I am currently an Associate Editor for the <a href="https://openresearchsoftware.metajnl.com/about/editorialteam">Journal of Open Research Software</a>.
+
 
 <!-- -------------- two‑column section -------------- -->
 <div style="display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem;">
