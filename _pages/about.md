@@ -7,9 +7,11 @@ redirect_from:
   - /about.html
 ---
 
-I am currently a Senior Researcher at EPR laboratory of International Tomography Center, Novosibirsk, Russian Federation. My research interest includes photochemistry, EPR spectroscopy, THz radiation, software development, and molecular magnetism. My current research focuses on the effects of pulsed THz radiation on molecular magnets and development of universal software for controlling multifunctional setups. Currently, my main project is focused on the development of fundamental and technical aspects of controlling the spin state of single-molecule magnets by applying resonant pulsed microwave and terahertz radiation to their spin system.
+I am currently a Senior Researcher at EPR laboratory of International Tomography Center, Novosibirsk, Russian Federation. My research interest includes photochemistry, EPR spectroscopy, THz radiation, software development, and molecular magnetism. My current research focuses on the effects of pulsed THz radiation on molecular magnets and development of universal software for controlling multifunctional setups. My main project is focused on the development of fundamental and technical aspects of controlling the spin state of single-molecule magnets by applying resonant pulsed microwave and terahertz radiation to their spin system.
 
-I also enjoy coding and am a main developer of <a href="https://github.com/Anatoly1010/Atomize">Atomize</a>, modular open-source software for control and automation of scientific and industrial instruments. In addition to my scientific activities, I dedicate a significant amount of time to teaching and reviewing for scientific journals. I am currently an Associate Editor for the <a href="https://openresearchsoftware.metajnl.com/about/editorialteam">Journal of Open Research Software</a>.
+I enjoy coding and am a main developer of <a href="https://github.com/Anatoly1010/Atomize">Atomize</a>, modular open-source software for control and automation of scientific and industrial instruments. Atomize is used to control our homemade broadband <a href="https://www.sciencedirect.com/science/article/pii/S2666441022000620">pulsed EPR spectrometer</a>. In addition to my scientific activities, I dedicate a significant amount of time to teaching at Department of Natural Sciences of Novosibirsk State University.
+
+I am also an Associate Editor for the <a href="https://openresearchsoftware.metajnl.com/about/editorialteam">Journal of Open Research Software</a>.
 
 
 <!-- -------------- two‑column section -------------- -->
