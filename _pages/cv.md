@@ -15,29 +15,18 @@ Education
 
 Work experience
 ======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
-
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
-
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* 2022 - Present: International Tomography Center, Laboratory of electron paramagnetic resonance spectroscopy
+* Winter 2019: Helmholtz-Zentrum Berlin, THz Beamline, The zero-field splitting parameters of a Co(II) single-molecule magnet in frozen liquid matrices
+* Winter 2019: European Laboratory for Non-linear Spectroscopy, Ultrafast photophysics of diphenylacetylene and its derivatives
+* Winter 2018: Institute of Physical Chemistry of the Polish Academy of Sciences, Photophysics of diphenylacetylene and its derivatives
+* 2011 - 2022: Voevodsky Institute of Chemical Kinetics and Combustion, Laboratory of fast proceeded processes
   
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* Programming: Python, Julia, Wolfram Mathematica
+* EPR techniques: continious wave, pulsed, time-resovled, and optically detected EPR spectroscopy
+* Other techniques: time-correlated single photon counting, IR spectroscopy, UV/Vis spectroscopy, THz radiation, large-scale facilities
+* Chemistry: experience with organic synthesis, purification of chemicals compounds, chromatography
 
 Publications
 ======
@@ -56,7 +45,4 @@ Teaching
   <ul>{% for post in site.teaching reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+
