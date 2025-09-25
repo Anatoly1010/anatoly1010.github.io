@@ -1,6 +1,6 @@
 ---
 title: "News"
-layout: collection           # or "archive" if you prefer that look
+layout: archive           # or "archive" if you prefer that look
 collection: news
 permalink: /news/
 entries_layout: list  
