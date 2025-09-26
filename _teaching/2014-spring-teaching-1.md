@@ -9,4 +9,4 @@ location: "Novosibirsk, Russia"
 ---
 
 - Semester-long course of lectures and seminars on magnetic resonance for graduate students. 
-- From 2022 to the present moment.
+- From 2021 to the present moment.

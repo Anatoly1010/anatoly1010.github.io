@@ -25,6 +25,7 @@ import os
 import re
 
 #todo: incorporate different collection types rather than a catch all publications, requires other changes to template
+"""
 publist = {
     "proceeding": {
         "file" : "proceedings.bib",
@@ -34,14 +35,18 @@ publist = {
                         "permalink":"/publication/"}
         
     },
+"""
+publist = {
     "journal":{
-        "file": "pubs.bib",
+        "file": "bibtex1.bib",
         "venuekey" : "journal",
         "venue-pretext" : "",
         "collection" : {"name":"publications",
                         "permalink":"/publication/"}
     } 
 }
+
+
 
 html_escape_table = {
     "&": "&amp;",
