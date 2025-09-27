@@ -8,6 +8,7 @@ date: 2021-01-01
 location: "Novosibirsk, Russia"
 ---
 
+
 ### General
 
 - Semester-long course of lectures and seminars on magnetic resonance for graduate students. 
