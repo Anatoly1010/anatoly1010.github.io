@@ -8,10 +8,11 @@ date: 2022-01-01
 location: "Novosibirsk, Russia"
 ---
 
+Fundamental annual course on the structure of matter
 
 ### General
 
-- Fundamental annual course on the structure of matter for third-year students. 
+- Structure of matter for third-year students.
 - From 2022 to the present moment.
 
 ### Useful Links, in russian

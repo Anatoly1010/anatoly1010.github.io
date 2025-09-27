@@ -8,10 +8,11 @@ date: 2021-01-01
 location: "Novosibirsk, Russia"
 ---
 
+Introduction to magnetic resonance for graduate students
 
 ### General
 
-- Semester-long course of lectures and seminars on magnetic resonance for graduate students. 
+- Semester-long course of lectures and seminars on magnetic resonance. 
 - From 2021 to the present moment.
 
 ### Useful Links, in russian
