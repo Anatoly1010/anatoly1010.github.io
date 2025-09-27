@@ -1,8 +1,10 @@
 ---
 title: "Cryomech LHeP22"
 excerpt: " "
-permalink: /portfolio/portfolio-2
-collection: portfolio
+categories: [projects]
+layout: single
+date: 2025-09-27
+author_profile: false
 ---
 
 To be filled.
