@@ -41,8 +41,8 @@ author:
   orcid            : "https://orcid.org/0000-0002-0458-5742"
   semantic         : # URL
   pubmed           : # URL
-  researchgate     : # https://www.researchgate.net/profile/Anatoly_Melnikov
-  scopus           : # URL
+  researchgate     : "https://www.researchgate.net/profile/Anatoly_Melnikov"
+  scopus           : "https://www.scopus.com/authid/detail.uri?authorId=57211395535"
 
   # Repositories and software development
   bitbucket        : # Username - Update with your username on the site
