@@ -5,15 +5,11 @@ type: "Annual course of lectures and seminars"
 permalink: /teaching/2022-teaching-2
 venue: "Novosibirsk State University, Department of Natural Sciences"
 date: 2022-01-01
+ongoing: true
 location: "Novosibirsk, Russia"
 ---
 
-Fundamental annual course on the structure of matter
-
-### General
-
-- Structure of matter for third-year students.
-- From 2022 to the present moment.
+Fundamental annual course on the structure of matter for third-year students.
 
 ### Useful Links, in russian
 

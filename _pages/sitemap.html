@@ -1,0 +1,49 @@
+---
+layout: archive
+title: "Sitemap"
+permalink: /sitemap/
+author_profile: true
+---
+
+{% include base_path %}
+
+<p>A list of all pages, posts, and entries on the site. An <a href="{{ base_path }}/sitemap.xml">XML version</a> is available for robots.</p>
+
+<section class="sitemap-section">
+<h2 class="sitemap-section__title">Pages</h2>
+<ul class="sitemap-list">
+{% assign pages_sorted = site.pages | sort: "title" %}
+{% for p in pages_sorted %}{% if p.title and p.permalink %}
+<li class="sitemap-item"><a class="sitemap-item__title" href="{{ base_path }}{{ p.url }}">{{ p.title | markdownify | strip_html }}</a></li>
+{% endif %}{% endfor %}
+</ul>
+</section>
+
+{% for collection in site.collections %}{% unless collection.output == false or collection.label == "posts" %}{% if collection.docs.size > 0 %}
+<section class="sitemap-section">
+<h2 class="sitemap-section__title">{{ collection.label | capitalize }} <span class="sitemap-section__count">({{ collection.docs.size }})</span></h2>
+<ul class="sitemap-list{% if collection.label == 'publications' %} sitemap-list--wide{% endif %}">
+{% assign items = collection.docs | sort: "date" | reverse %}
+{% for item in items %}
+<li class="sitemap-item">
+{% if item.date %}<time class="sitemap-item__date" datetime="{{ item.date | date_to_xmlschema }}">{{ item.date | date: "%Y-%m" }}</time>{% endif %}
+<a class="sitemap-item__title" href="{{ base_path }}{{ item.url }}">{{ item.title | markdownify | strip_html }}</a>
+</li>
+{% endfor %}
+</ul>
+</section>
+{% endif %}{% endunless %}{% endfor %}
+
+{% if site.posts.size > 0 %}
+<section class="sitemap-section">
+<h2 class="sitemap-section__title">Posts <span class="sitemap-section__count">({{ site.posts.size }})</span></h2>
+<ul class="sitemap-list">
+{% for post in site.posts %}
+<li class="sitemap-item">
+<time class="sitemap-item__date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m" }}</time>
+<a class="sitemap-item__title" href="{{ base_path }}{{ post.url }}">{{ post.title | markdownify | strip_html }}</a>
+</li>
+{% endfor %}
+</ul>
+</section>
+{% endif %}

@@ -13,48 +13,53 @@ I enjoy coding and am a main developer of <a href="https://github.com/Anatoly101
 
 I am also an Associate Editor for the <a href="https://openresearchsoftware.metajnl.com/about/editorialteam">Journal of Open Research Software</a>.
 
-
-<!-- -------------- two‑column section -------------- -->
-<div style="display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem;">
-
-  <!-- ░░ Column 2 — education summary ░░ -->
-  <div style="flex:1 1 280px;">
-    <h3>Education</h3>
-    <ul style="margin-left:0;">
-      <li><strong>Ph.D. Physical Chemistry</strong><br>
-          Voevodsky Institute of Chemical Kinetics and Combustion SB RAS, 2016<br>
-          Magnetosensitive luminescence of exciplexes, formed under the recombination of radiation generated radical ion pairs in non-polar solutions
-      </li>
-      <li><strong>Specialist Degree; Department of Natural Sciences</strong><br>
-          Novosibirsk State University, 2013
-      </li>
-    </ul>
+<section class="about-section about-news">
+  <div class="about-section__header">
+    <h2 class="about-section__title">News</h2>
+    <a class="about-section__more" href="/news/">All news →</a>
   </div>
+  <ul class="news-list">
+    {% assign news = site.posts
+       | where_exp: "p", "p.categories contains 'news'"
+       | sort: "date"
+       | reverse
+       | slice: 0, 5 %}
+    {% for post in news %}
+      <li class="news-item">
+        <time class="news-item__date" datetime="{{ post.date | date_to_xmlschema }}">
+          <span class="news-item__date-month">{{ post.date | date: "%b" }}</span>
+          <span class="news-item__date-year">{{ post.date | date: "%Y" }}</span>
+        </time>
+        <div class="news-item__body">
+          <a class="news-item__title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          {% if post.excerpt %}
+            <p class="news-item__excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</p>
+          {% endif %}
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
 
-</div>
-<!-- ------------ end two‑column section ------------ -->
-
-<div style="display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem;">
-
-  <!-- ░░ Column 1 — latest 3 news posts ░░ -->
-  <div style="flex:1 1 280px;">
-    <h3>News</h3>
-    <ul style="margin-left:0; padding-left:0; list-style:none;">
-      {% assign news = site.posts
-         | where_exp: "p", "p.categories contains 'news'"
-         | sort: "date"
-         | reverse
-         | slice: 0, 4 %}
-      {% for post in news %}
-        <li style="margin-bottom:0.75rem;">
-          <a href="{{ post.url | relative_url }}" style="font-weight:500;">
-            {{ post.title }}
-          </a><br>
-          <small>{{ post.date | date: "%B %d, %Y" }}</small>
-        </li>
-      {% endfor %}
-    </ul>
-    <a class="btn btn--primary" href="/news/">More news →</a>
+<section class="about-section about-education">
+  <div class="about-section__header">
+    <h2 class="about-section__title">Education</h2>
   </div>
-
-</div>
+  <ul class="edu-list">
+    <li class="edu-item">
+      <div class="edu-item__year">2016</div>
+      <div class="edu-item__body">
+        <div class="edu-item__degree">Ph.D., Physical Chemistry</div>
+        <div class="edu-item__inst">Voevodsky Institute of Chemical Kinetics and Combustion, SB RAS</div>
+        <p class="edu-item__thesis">Thesis: <em>Magnetosensitive luminescence of exciplexes, formed under the recombination of radiation-generated radical ion pairs in non-polar solutions</em></p>
+      </div>
+    </li>
+    <li class="edu-item">
+      <div class="edu-item__year">2013</div>
+      <div class="edu-item__body">
+        <div class="edu-item__degree">Specialist Degree</div>
+        <div class="edu-item__inst">Department of Natural Sciences, Novosibirsk State University</div>
+      </div>
+    </li>
+  </ul>
+</section>

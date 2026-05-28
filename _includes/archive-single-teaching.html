@@ -1,0 +1,31 @@
+{% include base_path %}
+
+{% if post.id %}
+  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+{% else %}
+  {% assign title = post.title %}
+{% endif %}
+
+<article class="pub-item" itemscope itemtype="http://schema.org/CreativeWork">
+  <div class="pub-item__year">{{ post.date | default: "1900-01-01" | date: "%Y" }}{% if post.ongoing %}–PT{% elsif post.end_date %}–{{ post.end_date }}{% endif %}</div>
+
+  <div class="pub-item__body">
+    <h3 class="pub-item__title" itemprop="headline">
+      <a href="{{ base_path }}{{ post.url }}">{{ title }}</a>
+    </h3>
+
+    <p class="pub-item__cite">
+      {% if post.type %}{{ post.type }}{% endif %}
+      {% if post.venue %} &middot; <em>{{ post.venue }}</em>{% endif %}
+      {% if post.location %} &middot; {{ post.location }}{% endif %}
+    </p>
+
+    {% if post.excerpt %}
+      <p class="pub-item__excerpt" itemprop="description">{{ post.excerpt | markdownify | remove: "<p>" | remove: "</p>" }}</p>
+    {% endif %}
+
+    <p class="pub-item__links">
+      <a class="pub-link pub-link--ghost" href="{{ base_path }}{{ post.url }}">Details</a>
+    </p>
+  </div>
+</article>

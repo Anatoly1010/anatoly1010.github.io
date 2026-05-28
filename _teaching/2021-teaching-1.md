@@ -5,15 +5,11 @@ type: "Semester-long course of lectures and seminars"
 permalink: /teaching/2021-teaching-1
 venue: "Novosibirsk State University, Department of Natural Sciences"
 date: 2021-01-01
+ongoing: true
 location: "Novosibirsk, Russia"
 ---
 
-Introduction to magnetic resonance for graduate students
-
-### General
-
-- Semester-long course of lectures and seminars on magnetic resonance. 
-- From 2021 to the present moment.
+Introduction to magnetic resonance for graduate students.
 
 ### Useful Links, in russian
 

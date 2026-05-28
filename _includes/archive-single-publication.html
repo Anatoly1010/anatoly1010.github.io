@@ -1,0 +1,50 @@
+{% include base_path %}
+
+{% if post.id %}
+  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+{% else %}
+  {% assign title = post.title %}
+{% endif %}
+
+<article class="pub-item" itemscope itemtype="http://schema.org/CreativeWork">
+  <div class="pub-item__year">{{ post.date | default: "1900-01-01" | date: "%Y" }}</div>
+
+  <div class="pub-item__body">
+    <h3 class="pub-item__title" itemprop="headline">
+      {% if post.paperurl %}
+        <a href="{{ post.paperurl }}">{{ title }}</a>
+      {% else %}
+        <a href="{{ base_path }}{{ post.url }}">{{ title }}</a>
+      {% endif %}
+    </h3>
+
+    {% if post.citation %}
+      <p class="pub-item__cite">
+        {{ post.citation }}
+        {% if post.paperurl contains "doi.org" %}
+          {% assign doi = post.paperurl | replace: "https://doi.org/", "" | replace: "http://doi.org/", "" | replace: "https://dx.doi.org/", "" %}
+          <a class="pub-item__doi" href="{{ post.paperurl }}">doi:{{ doi }}</a>
+        {% endif %}
+      </p>
+    {% elsif post.venue %}
+      <p class="pub-item__cite">
+        <em>{{ post.venue }}</em>
+        {% if post.paperurl contains "doi.org" %}
+          {% assign doi = post.paperurl | replace: "https://doi.org/", "" | replace: "http://doi.org/", "" | replace: "https://dx.doi.org/", "" %}
+          &middot; <a class="pub-item__doi" href="{{ post.paperurl }}">doi:{{ doi }}</a>
+        {% endif %}
+      </p>
+    {% endif %}
+
+    {% if post.excerpt %}
+      <p class="pub-item__excerpt" itemprop="description">{{ post.excerpt | markdownify | remove: "<p>" | remove: "</p>" }}</p>
+    {% endif %}
+
+    <p class="pub-item__links">
+      {% if post.paperurl %}<a class="pub-link" href="{{ post.paperurl }}">Paper</a>{% endif %}
+      {% if post.slidesurl %}<a class="pub-link" href="{{ post.slidesurl }}">Slides</a>{% endif %}
+      {% if post.bibtexurl %}<a class="pub-link" href="{{ post.bibtexurl }}">BibTeX</a>{% endif %}
+      <a class="pub-link pub-link--ghost" href="{{ base_path }}{{ post.url }}">Details</a>
+    </p>
+  </div>
+</article>

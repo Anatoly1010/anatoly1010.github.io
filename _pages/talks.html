@@ -5,12 +5,97 @@ permalink: /talks/
 author_profile: true
 ---
 
-{% if site.talkmap_link == true %}
+{% include base_path %}
 
-<p style="text-decoration:underline;"><a href="/talkmap.html">See a map of all the places I've given a talk!</a></p>
+{% assign mapped_talks = site.talks | where_exp: "t", "t.lat" %}
+{% if mapped_talks.size > 0 %}
+  <script src="https://unpkg.com/d3@7/dist/d3.min.js"></script>
+  <script src="https://unpkg.com/topojson-client@3/dist/topojson-client.min.js"></script>
 
+  <div id="talkmap" class="talk-map">
+    <div class="talk-map__tooltip" id="talkmap-tip" hidden></div>
+  </div>
+
+  <script>
+    (function () {
+      var talks = [
+        {% for t in mapped_talks %}
+          {
+            lat: {{ t.lat }},
+            lng: {{ t.lng }},
+            title: {{ t.title | jsonify }},
+            venue: {{ t.venue | default: "" | jsonify }},
+            location: {{ t.location | default: "" | jsonify }},
+            date: {{ t.date | date: "%B %Y" | jsonify }},
+            url: {{ t.url | relative_url | jsonify }}
+          }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ];
+
+      var width = 960, height = 480;
+      var container = document.getElementById('talkmap');
+      var tip = document.getElementById('talkmap-tip');
+
+      var svg = d3.select('#talkmap').append('svg')
+        .attr('viewBox', '0 0 ' + width + ' ' + height)
+        .attr('preserveAspectRatio', 'xMidYMid meet')
+        .attr('class', 'talk-map__svg');
+
+      var projection = d3.geoNaturalEarth1()
+        .scale(180)
+        .translate([width / 2, height / 2]);
+      var path = d3.geoPath(projection);
+
+      d3.json('https://unpkg.com/world-atlas@2/countries-110m.json').then(function (world) {
+        var countries = topojson.feature(world, world.objects.countries);
+
+        svg.append('g').attr('class', 'talk-map__land')
+          .selectAll('path').data(countries.features).enter()
+          .append('path').attr('d', path);
+
+        svg.append('path')
+          .datum(topojson.mesh(world, world.objects.countries, function (a, b) { return a !== b; }))
+          .attr('class', 'talk-map__border')
+          .attr('d', path);
+
+        var g = svg.append('g').attr('class', 'talk-map__markers');
+
+        talks.forEach(function (t) {
+          var p = projection([t.lng, t.lat]);
+          if (!p) return;
+
+          g.append('circle')
+            .attr('cx', p[0]).attr('cy', p[1]).attr('r', 4.5)
+            .attr('class', 'talk-map__dot-halo');
+
+          var dot = g.append('circle')
+            .attr('cx', p[0]).attr('cy', p[1]).attr('r', 4)
+            .attr('class', 'talk-map__dot')
+            .style('cursor', 'pointer');
+
+          dot.on('mouseover', function () {
+            tip.innerHTML = '<strong>' + t.title + '</strong>'
+              + (t.venue ? '<br><em>' + t.venue + '</em>' : '')
+              + (t.location ? ' &middot; ' + t.location : '')
+              + '<br><small>' + t.date + '</small>';
+            tip.hidden = false;
+          });
+          dot.on('mousemove', function (ev) {
+            var rect = container.getBoundingClientRect();
+            var x = ev.clientX - rect.left + 14;
+            var y = ev.clientY - rect.top + 14;
+            if (x + 240 > rect.width) x = ev.clientX - rect.left - 244;
+            tip.style.left = x + 'px';
+            tip.style.top = y + 'px';
+          });
+          dot.on('mouseout', function () { tip.hidden = true; });
+          dot.on('click', function () { window.location = t.url; });
+        });
+      });
+    })();
+  </script>
 {% endif %}
 
 {% for post in site.talks reversed %}
-  {% include archive-single-talk.html %}
+  {% include archive-single-talk-list.html %}
 {% endfor %}

@@ -34,8 +34,40 @@ layout: default
           <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time></p>
         {% endif %}
         
-        {% if page.collection == 'teaching' %}
-          <p> {{ page.type }}, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
+        {% if page.collection == 'portfolio' %}
+          <dl class="teach-meta">
+            {% if page.project_title %}
+              <div class="teach-meta__row"><dt>Title</dt><dd>{{ page.project_title }}</dd></div>
+            {% endif %}
+            {% if page.funding %}
+              <div class="teach-meta__row"><dt>Funding</dt><dd>{{ page.funding }}</dd></div>
+            {% endif %}
+            {% if page.date %}
+              <div class="teach-meta__row"><dt>Started</dt><dd>{{ page.date | date: "%B %Y" }}</dd></div>
+            {% endif %}
+            {% if page.repo %}
+              <div class="teach-meta__row"><dt>Repo</dt><dd><a href="{{ page.repo }}">{{ page.repo }}</a></dd></div>
+            {% endif %}
+            {% if page.link %}
+              <div class="teach-meta__row"><dt>Link</dt><dd><a href="{{ page.link }}">{{ page.link }}</a></dd></div>
+            {% endif %}
+          </dl>
+        {% elsif page.collection == 'teaching' %}
+          <dl class="teach-meta">
+            {% if page.type %}
+              <div class="teach-meta__row"><dt>Format</dt><dd>{{ page.type }}</dd></div>
+            {% endif %}
+            {% if page.venue %}
+              <div class="teach-meta__row"><dt>Venue</dt><dd>{{ page.venue }}</dd></div>
+            {% endif %}
+            {% if page.location %}
+              <div class="teach-meta__row"><dt>Location</dt><dd>{{ page.location }}</dd></div>
+            {% endif %}
+            <div class="teach-meta__row">
+              <dt>Period</dt>
+              <dd>{{ page.date | default: "1900-01-01" | date: "%Y" }}{% if page.ongoing %}–PT{% elsif page.end_date %}–{{ page.end_date }}{% endif %}</dd>
+            </div>
+          </dl>
         {% elsif page.venue and page.date %}
           <p>Published in <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif page.date %}
@@ -83,9 +115,10 @@ layout: default
         {% include page__taxonomy.html %}
       </footer>
 
-      {% if page.share %}{% include social-share.html %}{% endif %}
-
-      {% include post_pagination.html %}
+      {% unless page.collection == 'publications' or page.collection == 'teaching' or page.collection == 'portfolio' %}
+        {% if page.share %}{% include social-share.html %}{% endif %}
+        {% include post_pagination.html %}
+      {% endunless %}
     </div>
 
     {% if site.comments.provider and page.comments %}

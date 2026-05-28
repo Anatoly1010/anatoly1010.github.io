@@ -30,13 +30,23 @@ layout: default
           {% if page.read_time %}
             <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
           {% endif %}
-        {% if page.modified %}
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i>Date:</strong> <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time></p>
-        {% elsif page.date %}
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i>Date:</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></p>
-        {% endif %}
-        {% if page.talk_type %}<p>{{page.talk_type}} at {{ page.venue }},  {{page.location}} {% endif %}
-
+        <dl class="teach-meta">
+          {% if page.type %}
+            <div class="teach-meta__row"><dt>Format</dt><dd>{{ page.type }}</dd></div>
+          {% endif %}
+          {% if page.venue %}
+            <div class="teach-meta__row"><dt>Venue</dt><dd>{{ page.venue }}</dd></div>
+          {% endif %}
+          {% if page.location %}
+            <div class="teach-meta__row"><dt>Location</dt><dd>{{ page.location }}</dd></div>
+          {% endif %}
+          {% if page.date %}
+            <div class="teach-meta__row">
+              <dt>Date</dt>
+              <dd><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></dd>
+            </div>
+          {% endif %}
+        </dl>
         </header>
       {% endunless %}
 
@@ -52,9 +62,6 @@ layout: default
         {% include page__taxonomy.html %}
       </footer>
 
-      {% if page.share %}{% include social-share.html %}{% endif %}
-
-      {% include post_pagination.html %}
     </div>
 
     {% if site.comments.provider and page.comments %}
