@@ -71,8 +71,10 @@ layout: default
         {% elsif page.venue and page.date %}
           <p>Published in <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif page.date %}
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
-        {% endif %}    
+          <dl class="teach-meta">
+            <div class="teach-meta__row"><dt>Date</dt><dd>{{ page.date | date: "%B %-d, %Y" }}</dd></div>
+          </dl>
+        {% endif %}
         </header>
       {% endunless %}
 
@@ -108,14 +110,16 @@ layout: default
         {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
 
-      <footer class="page__meta">
-        {% if site.data.ui-text[site.locale].meta_label %}
-          <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
-        {% endif %}
-        {% include page__taxonomy.html %}
-      </footer>
+      {% unless page.collection == 'posts' %}
+        <footer class="page__meta">
+          {% if site.data.ui-text[site.locale].meta_label %}
+            <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
+          {% endif %}
+          {% include page__taxonomy.html %}
+        </footer>
+      {% endunless %}
 
-      {% unless page.collection == 'publications' or page.collection == 'teaching' or page.collection == 'portfolio' %}
+      {% unless page.collection == 'publications' or page.collection == 'teaching' or page.collection == 'portfolio' or page.collection == 'posts' %}
         {% if page.share %}{% include social-share.html %}{% endif %}
         {% include post_pagination.html %}
       {% endunless %}

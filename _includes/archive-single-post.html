@@ -1,0 +1,16 @@
+<div class="pub-item">
+  <time class="news-item__date" datetime="{{ post.date | date_to_xmlschema }}">
+    <span class="news-item__date-month">{{ post.date | date: "%b" }}</span>
+    <span class="news-item__date-year">{{ post.date | date: "%Y" }}</span>
+  </time>
+  <div class="pub-item__body">
+    <h3 class="pub-item__title">
+      <a href="{{ base_path }}{{ post.url }}">{{ post.title }}</a>
+    </h3>
+    <div class="pub-item__cite">{{ post.date | date: "%B %-d, %Y" }}{% if post.tags %} · {{ post.tags | join: ", " }}{% endif %}</div>
+    {% if post.excerpt %}<div class="pub-item__excerpt">{{ post.excerpt | markdownify | strip_html | truncate: 200 }}</div>{% endif %}
+    <div class="pub-item__links">
+      <a class="pub-link pub-link--ghost" href="{{ base_path }}{{ post.url }}">Read more</a>
+    </div>
+  </div>
+</div>

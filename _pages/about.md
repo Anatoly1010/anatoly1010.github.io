@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "About me"
+title: "About Me"
 author_profile: true
 redirect_from: 
   - /about/
@@ -16,7 +16,7 @@ I am also an Associate Editor for the <a href="https://openresearchsoftware.meta
 <section class="about-section about-news">
   <div class="about-section__header">
     <h2 class="about-section__title">News</h2>
-    <a class="about-section__more" href="/news/">All news →</a>
+    <a class="pill-btn" href="/news/">All news</a>
   </div>
   <ul class="news-list">
     {% assign news = site.posts
@@ -38,28 +38,5 @@ I am also an Associate Editor for the <a href="https://openresearchsoftware.meta
         </div>
       </li>
     {% endfor %}
-  </ul>
-</section>
-
-<section class="about-section about-education">
-  <div class="about-section__header">
-    <h2 class="about-section__title">Education</h2>
-  </div>
-  <ul class="edu-list">
-    <li class="edu-item">
-      <div class="edu-item__year">2016</div>
-      <div class="edu-item__body">
-        <div class="edu-item__degree">Ph.D., Physical Chemistry</div>
-        <div class="edu-item__inst">Voevodsky Institute of Chemical Kinetics and Combustion, SB RAS</div>
-        <p class="edu-item__thesis">Thesis: <em>Magnetosensitive luminescence of exciplexes, formed under the recombination of radiation-generated radical ion pairs in non-polar solutions</em></p>
-      </div>
-    </li>
-    <li class="edu-item">
-      <div class="edu-item__year">2013</div>
-      <div class="edu-item__body">
-        <div class="edu-item__degree">Specialist Degree</div>
-        <div class="edu-item__inst">Department of Natural Sciences, Novosibirsk State University</div>
-      </div>
-    </li>
   </ul>
 </section>

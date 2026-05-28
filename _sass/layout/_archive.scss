@@ -422,14 +422,14 @@
   }
 
   &--ghost {
-    color: var(--global-text-color-light);
-    border-color: transparent;
-    background: var(--global-code-background-color);
+    color: var(--global-link-color);
+    border-color: var(--global-border-color);
+    background: transparent;
 
     &:hover {
-      color: var(--global-text-color);
-      background: var(--global-thead-color);
-      border-color: transparent;
+      color: var(--global-bg-color);
+      background: var(--global-link-color);
+      border-color: var(--global-link-color);
     }
   }
 }
@@ -730,4 +730,68 @@
   font-size: 0.85em;
   line-height: 1.5;
   color: var(--global-text-color-light);
+}
+
+/* ==========================================================================
+   CV PAGE — actions / print
+   ========================================================================== */
+
+.cv-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 0.5rem;
+}
+
+.pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.9rem;
+  font-family: $sans-serif;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--global-link-color);
+  background: transparent;
+  border: 1px solid var(--global-link-color);
+  border-radius: 4px;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    color: #fff;
+    background: var(--global-link-color);
+    text-decoration: none;
+  }
+}
+
+@media print {
+  .cv-actions {
+    display: none;
+  }
+
+  .about-section__more {
+    display: none;
+  }
+
+  .sidebar,
+  .author__avatar,
+  .author__urls-wrapper {
+    display: none;
+  }
+
+  .about-section {
+    margin-top: 1.4rem;
+  }
+
+  .about-section__header {
+    break-after: avoid;
+  }
+
+  .pub-item,
+  .edu-item,
+  .news-item {
+    break-inside: avoid;
+  }
 }
