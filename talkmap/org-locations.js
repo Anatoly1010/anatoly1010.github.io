@@ -1,22 +1,12 @@
 var addressPoints = [
   [
-    "Talk 2 on Relevant Topic in Your Field<br />London School of Testing; London, UK",
-    51.4893335,
-    -0.14405508452768728
+    "EPR spectroscopy endstation at the Novosibirsk free electron laser facility: Status 2025<br />West Lake University; Hangzhou, China",
+    30.2741,
+    120.1551
   ],
   [
-    "Tutorial 1 on Relevant Topic in Your Field<br />UC-Berkeley Institute for Testing Science; Berkeley, CA, USA",
-    37.8708393,
-    -122.272863
-  ],
-  [
-    "Conference Proceeding talk 3 on Relevant Topic in Your Field<br />Testing Institute of America 2014 Annual Conference; Los Angeles, CA, USA",
-    34.0536909,
-    -118.242766
-  ],
-  [
-    "Talk 1 on Relevant Topic in Your Field<br />UC San Francisco, Department of Testing; San Francisco, CA, USA",
-    37.7792588,
-    -122.4193286
+    "Polarization of the ground Kramers doublet in single-molecule magnets based on Co(II) by pumping the spin system with resonant pulsed THz radiation<br />International Conference Laser Optics (ICLO 2026); St. Petersburg, Russia",
+    59.9311,
+    30.3609
   ]
 ];
