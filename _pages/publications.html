@@ -11,7 +11,48 @@ author_profile: true
 
 {% include base_path %}
 
+{% assign by_year = site.publications | group_by_exp: 'p', 'p.date | date: "%Y"' | sort: 'name' %}
+{% if by_year.size > 0 %}
+  {% assign first_year = by_year[0].name | plus: 0 %}
+  {% assign last_year = by_year.last.name | plus: 0 %}
+  {% assign span = last_year | minus: first_year %}
+  {% assign max_count = 0 %}
+  {% for g in by_year %}
+    {% if g.items.size > max_count %}{% assign max_count = g.items.size %}{% endif %}
+  {% endfor %}
+  {% assign slot = 36 %}
+  {% assign bar_w = 24 %}
+  {% assign n_years = span | plus: 1 %}
+  {% assign chart_w = n_years | times: slot | plus: 20 %}
+  {% assign chart_h = 160 %}
+  {% assign max_bar_h = 110 %}
+  {% assign axis_y = chart_h | minus: 28 %}
+
+  <figure class="pub-year-chart" aria-label="Number of publications per year">
+    <svg viewBox="0 0 {{ chart_w }} {{ chart_h }}" preserveAspectRatio="xMidYMid meet" role="img" style="width:100%;height:auto;display:block;margin:0 auto 1.5em;">
+      <line x1="6" y1="{{ axis_y }}" x2="{{ chart_w | minus: 6 }}" y2="{{ axis_y }}" stroke="var(--global-border-color)" stroke-width="1"/>
+      {% for i in (0..span) %}
+        {% assign year = first_year | plus: i %}
+        {% assign year_str = year | append: '' %}
+        {% assign match = by_year | where: 'name', year_str %}
+        {% if match.size > 0 %}{% assign cnt = match[0].items.size %}{% else %}{% assign cnt = 0 %}{% endif %}
+        {% assign bh = cnt | times: max_bar_h | divided_by: max_count %}
+        {% assign x = i | times: slot | plus: 10 %}
+        {% assign cx = x | plus: 12 %}
+        {% assign y = axis_y | minus: bh %}
+        {% assign label_y = chart_h | minus: 12 %}
+        {% if cnt > 0 %}
+          <rect x="{{ x }}" y="{{ y }}" width="{{ bar_w }}" height="{{ bh }}" rx="2" fill="var(--global-link-color)"/>
+          <text x="{{ cx }}" y="{{ y | minus: 4 }}" text-anchor="middle" font-size="11" fill="var(--global-text-color)" font-family="sans-serif">{{ cnt }}</text>
+        {% endif %}
+        <text x="{{ cx }}" y="{{ label_y }}" text-anchor="middle" font-size="11" fill="var(--global-text-color-light)" font-family="sans-serif">{{ year }}</text>
+      {% endfor %}
+    </svg>
+  </figure>
+{% endif %}
+
 <!-- New style rendering if publication categories are defined -->
+
 {% if site.publication_category %}
   {% for category in site.publication_category  %}
     {% assign title_shown = false %}
