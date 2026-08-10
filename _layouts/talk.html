@@ -25,43 +25,62 @@ layout: default
 
     <div class="page__inner-wrap">
       {% unless page.header.overlay_color or page.header.overlay_image %}
-        <header>
+        <header class="page-header">
           {% if page.title %}<h1 class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
           {% if page.read_time %}
             <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
           {% endif %}
-        <dl class="teach-meta">
-          {% if page.type %}
-            <div class="teach-meta__row"><dt>Format</dt><dd>{{ page.type }}</dd></div>
-          {% endif %}
-          {% if page.venue %}
-            <div class="teach-meta__row"><dt>Venue</dt><dd>{{ page.venue }}</dd></div>
-          {% endif %}
-          {% if page.location %}
-            <div class="teach-meta__row"><dt>Location</dt><dd>{{ page.location }}</dd></div>
-          {% endif %}
-          {% if page.date %}
-            <div class="teach-meta__row">
-              <dt>Date</dt>
-              <dd><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></dd>
-            </div>
-          {% endif %}
-        </dl>
         </header>
       {% endunless %}
 
       <section class="page__content" itemprop="text">
-        {{ content }}
-        {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
-      </section>
+        <section class="panel">
+          <div class="panel__head">
+            <h2 class="panel__title">Talk</h2>
+          </div>
+          <div class="panel__body">
+            <ul class="panel-specs">
+              {% if page.type %}
+                <li><span class="panel-specs__key">Format</span><span class="panel-specs__value">{{ page.type }}</span></li>
+              {% endif %}
+              {% if page.venue %}
+                <li><span class="panel-specs__key">Venue</span><span class="panel-specs__value">{{ page.venue }}</span></li>
+              {% endif %}
+              {% if page.location %}
+                <li><span class="panel-specs__key">Location</span><span class="panel-specs__value">{{ page.location }}</span></li>
+              {% endif %}
+              {% if page.date %}
+                <li><span class="panel-specs__key">Date</span><span class="panel-specs__value"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></span></li>
+              {% endif %}
+            </ul>
+            {% if page.link or page.slidesurl %}
+              <div class="panel-actions">
+                {% if page.slidesurl %}<a class="panel-btn" href="{{ page.slidesurl }}">Slides</a>{% endif %}
+                {% if page.link %}<a class="panel-btn" href="{{ page.link }}">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a>{% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </section>
 
-      <footer class="page__meta">
-        {% if site.data.ui-text[site.locale].meta_label %}
-          <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
+        {% assign body = content | strip %}
+        {% if body != '' %}
+          {% include panel-prose.html body=body title="Abstract" %}
         {% endif %}
-        {% include page__taxonomy.html %}
-      </footer>
 
+        {% assign has_taxonomy = false %}
+        {% if site.tag_archive.type and page.tags[0] %}{% assign has_taxonomy = true %}{% endif %}
+        {% if site.category_archive.type and page.categories[0] %}{% assign has_taxonomy = true %}{% endif %}
+        {% if has_taxonomy %}
+          <section class="panel">
+            <div class="panel__head">
+              <h2 class="panel__title">Filed under</h2>
+            </div>
+            <div class="panel__body">
+              {% include page__taxonomy.html %}
+            </div>
+          </section>
+        {% endif %}
+      </section>
     </div>
 
     {% if site.comments.provider and page.comments %}

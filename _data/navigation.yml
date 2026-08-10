@@ -19,6 +19,9 @@ main:
     
   - title: "Projects"
     url: /portfolio/
+
+  - title: "Software"
+    url: /software/
         
   - title: "Blog Posts"
     url: /year-archive/

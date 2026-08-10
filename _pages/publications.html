@@ -2,76 +2,65 @@
 layout: archive
 title: "Publications"
 permalink: /publications/
-author_profile: true
+lead: "Peer-reviewed papers and conference contributions, grouped by year."
 ---
-
-{% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
-{% endif %}
 
 {% include base_path %}
 
-{% assign by_year = site.publications | group_by_exp: 'p', 'p.date | date: "%Y"' | sort: 'name' %}
+{% assign preprints = site.publications | where: 'category', 'preprints' | sort: 'date' | reverse %}
+{% assign papers = site.publications | where_exp: 'p', "p.category != 'preprints'" %}
+{% assign by_year = papers | group_by_exp: 'p', 'p.date | date: "%Y"' | sort: 'name' %}
+
 {% if by_year.size > 0 %}
-  {% assign first_year = by_year[0].name | plus: 0 %}
-  {% assign last_year = by_year.last.name | plus: 0 %}
-  {% assign span = last_year | minus: first_year %}
-  {% assign max_count = 0 %}
-  {% for g in by_year %}
-    {% if g.items.size > max_count %}{% assign max_count = g.items.size %}{% endif %}
-  {% endfor %}
-  {% assign slot = 36 %}
-  {% assign bar_w = 24 %}
-  {% assign n_years = span | plus: 1 %}
-  {% assign chart_w = n_years | times: slot | plus: 20 %}
-  {% assign chart_h = 160 %}
-  {% assign max_bar_h = 110 %}
-  {% assign axis_y = chart_h | minus: 28 %}
+  {% assign first_year = by_year[0].name %}
+  {% assign last_year = by_year.last.name %}
 
-  <figure class="pub-year-chart" aria-label="Number of publications per year">
-    <svg viewBox="0 0 {{ chart_w }} {{ chart_h }}" preserveAspectRatio="xMidYMid meet" role="img" style="width:100%;height:auto;display:block;margin:0 auto 1.5em;">
-      <line x1="6" y1="{{ axis_y }}" x2="{{ chart_w | minus: 6 }}" y2="{{ axis_y }}" stroke="var(--global-border-color)" stroke-width="1"/>
-      {% for i in (0..span) %}
-        {% assign year = first_year | plus: i %}
-        {% assign year_str = year | append: '' %}
-        {% assign match = by_year | where: 'name', year_str %}
-        {% if match.size > 0 %}{% assign cnt = match[0].items.size %}{% else %}{% assign cnt = 0 %}{% endif %}
-        {% assign bh = cnt | times: max_bar_h | divided_by: max_count %}
-        {% assign x = i | times: slot | plus: 10 %}
-        {% assign cx = x | plus: 12 %}
-        {% assign y = axis_y | minus: bh %}
-        {% assign label_y = chart_h | minus: 12 %}
-        {% if cnt > 0 %}
-          <rect x="{{ x }}" y="{{ y }}" width="{{ bar_w }}" height="{{ bh }}" rx="2" fill="var(--global-link-color)"/>
-          <text x="{{ cx }}" y="{{ y | minus: 4 }}" text-anchor="middle" font-size="11" fill="var(--global-text-color)" font-family="sans-serif">{{ cnt }}</text>
-        {% endif %}
-        <text x="{{ cx }}" y="{{ label_y }}" text-anchor="middle" font-size="11" fill="var(--global-text-color-light)" font-family="sans-serif">{{ year }}</text>
-      {% endfor %}
-    </svg>
-  </figure>
-{% endif %}
+  <section class="panel">
+    <div class="panel__head">
+      <h2 class="panel__title">At a glance</h2>
+      {% if site.author.googlescholar %}<a class="panel__see-all" href="{{ site.author.googlescholar }}">Google Scholar →</a>{% endif %}
+    </div>
+    <div class="panel__body">
+      <ul class="panel-stats">
+        <li><b>{{ papers.size }}</b><i>Publications</i></li>
+        {% if site.author.citations %}<li><b>{{ site.author.citations }}</b><i>Citations</i></li>{% endif %}
+        {% if site.author.h_index %}<li><b>{{ site.author.h_index }}</b><i>h-index</i></li>{% endif %}
+        <li><b>{{ first_year }}–{{ last_year }}</b><i>Publishing since</i></li>
+      </ul>
+    </div>
+  </section>
 
-<!-- New style rendering if publication categories are defined -->
+  {% if preprints.size > 0 %}
+    <section class="panel">
+      <div class="panel__head">
+        <h2 class="panel__title">Preprints</h2>
+        <span class="panel__count">{{ preprints.size }} item{% if preprints.size != 1 %}s{% endif %}</span>
+      </div>
+      <div class="panel__body">
+        <ol class="panel-pubs">
+          {% for post in preprints %}
+            {% include archive-single-publication.html %}
+          {% endfor %}
+        </ol>
+      </div>
+    </section>
+  {% endif %}
 
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single-publication.html %}
-    {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single-publication.html %}
+  {% assign years_desc = by_year | sort: 'name' | reverse %}
+  {% for group in years_desc %}
+    <section class="panel">
+      <div class="panel__head">
+        <h2 class="panel__title">{{ group.name }}</h2>
+        <span class="panel__count">{{ group.items.size }} item{% if group.items.size != 1 %}s{% endif %}</span>
+      </div>
+      <div class="panel__body">
+        <ol class="panel-pubs">
+          {% assign items = group.items | sort: 'date' | reverse %}
+          {% for post in items %}
+            {% include archive-single-publication.html %}
+          {% endfor %}
+        </ol>
+      </div>
+    </section>
   {% endfor %}
 {% endif %}
-
-
-

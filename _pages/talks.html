@@ -2,7 +2,7 @@
 layout: archive
 title: "Talks and Presentations"
 permalink: /talks/
-author_profile: true
+lead: "Conference talks, invited lectures and seminars."
 ---
 
 {% include base_path %}
@@ -12,9 +12,17 @@ author_profile: true
   <script src="https://unpkg.com/d3@7/dist/d3.min.js"></script>
   <script src="https://unpkg.com/topojson-client@3/dist/topojson-client.min.js"></script>
 
-  <div id="talkmap" class="talk-map">
-    <div class="talk-map__tooltip" id="talkmap-tip" hidden></div>
-  </div>
+  <section class="panel">
+    <div class="panel__head">
+      <h2 class="panel__title">Where I have spoken</h2>
+      <span class="panel__count">{{ mapped_talks.size }} location{% if mapped_talks.size != 1 %}s{% endif %}</span>
+    </div>
+    <div class="panel__body panel__body--flush">
+      <div id="talkmap" class="talk-map">
+        <div class="talk-map__tooltip" id="talkmap-tip" hidden></div>
+      </div>
+    </div>
+  </section>
 
   <script>
     (function () {
@@ -96,6 +104,20 @@ author_profile: true
   </script>
 {% endif %}
 
-{% for post in site.talks reversed %}
-  {% include archive-single-talk-list.html %}
+{% assign talks_by_year = site.talks | group_by_exp: 't', 't.date | date: "%Y"' | sort: 'name' | reverse %}
+{% for group in talks_by_year %}
+  <section class="panel">
+    <div class="panel__head">
+      <h2 class="panel__title">{{ group.name }}</h2>
+      <span class="panel__count">{{ group.items.size }} talk{% if group.items.size != 1 %}s{% endif %}</span>
+    </div>
+    <div class="panel__body">
+      <ul class="panel-news">
+        {% assign items = group.items | sort: 'date' | reverse %}
+        {% for post in items %}
+          {% include archive-single-talk-list.html %}
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
 {% endfor %}

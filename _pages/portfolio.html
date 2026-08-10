@@ -2,13 +2,23 @@
 layout: archive
 permalink: /portfolio/
 title: "Projects"
-author_profile: true
+lead: "Research grants."
 redirect_from:
   - /wordpress/blog-posts/
 ---
 
 {% include base_path %}
 
-{% for post in site.portfolio reversed %}
-  {% include archive-single-portfolio.html %}
-{% endfor %}
+<section class="panel">
+  <div class="panel__head">
+    <h2 class="panel__title">Projects</h2>
+    <span class="panel__count">{{ site.portfolio.size }}</span>
+  </div>
+  <div class="panel__body">
+    <ul class="panel-news">
+      {% for post in site.portfolio reversed %}
+        {% include archive-single-portfolio.html %}
+      {% endfor %}
+    </ul>
+  </div>
+</section>

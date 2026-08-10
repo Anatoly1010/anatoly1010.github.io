@@ -1,0 +1,33 @@
+{% comment %}renders include.body as prose panels: text before the first h3 keeps include.title, each h3 section becomes its own panel{% endcomment %}
+{% assign chunks = include.body | split: '<h3' %}
+{% assign lead = chunks[0] | strip %}
+{% if lead != '' %}
+  <section class="panel">
+    <div class="panel__head">
+      <h2 class="panel__title">{{ include.title }}</h2>
+    </div>
+    <div class="panel__body panel__body--prose">
+      <div class="panel-prose">{{ lead }}</div>
+    </div>
+  </section>
+{% endif %}
+{% for chunk in chunks offset: 1 %}
+  {% assign parts = chunk | split: '</h3>' %}
+  {% assign head_bits = parts[0] | split: '>' %}
+  {% assign head_text = '' %}
+  {% for bit in head_bits offset: 1 %}{% if forloop.first %}{% assign head_text = bit %}{% else %}{% assign head_text = head_text | append: '>' | append: bit %}{% endif %}{% endfor %}
+  {% assign sec_body = '' %}
+  {% for part in parts offset: 1 %}{% if forloop.first %}{% assign sec_body = part %}{% else %}{% assign sec_body = sec_body | append: '</h3>' | append: part %}{% endif %}{% endfor %}
+  {% assign head_text = head_text | strip_html | strip %}
+  {% assign sec_body = sec_body | strip %}
+  {% if head_text != '' or sec_body != '' %}
+    <section class="panel">
+      <div class="panel__head">
+        <h2 class="panel__title">{{ head_text }}</h2>
+      </div>
+      <div class="panel__body panel__body--prose">
+        <div class="panel-prose">{{ sec_body }}</div>
+      </div>
+    </section>
+  {% endif %}
+{% endfor %}

@@ -5,7 +5,6 @@ excerpt: " "
 categories: [projects]
 layout: single
 date: 2023-01-01
-author_profile: true
 ---
 
 To be filled.

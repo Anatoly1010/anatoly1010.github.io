@@ -14,6 +14,11 @@ layout: default
   {% endunless %}
 {% endif %}
 
+{% assign is_item = false %}
+{% if page.collection == 'publications' or page.collection == 'teaching' or page.collection == 'portfolio' or page.collection == 'posts' %}
+  {% assign is_item = true %}
+{% endif %}
+
 <div id="main" role="main">
   {% include sidebar.html %}
 
@@ -25,92 +30,175 @@ layout: default
 
     <div class="page__inner-wrap">
       {% unless page.header.overlay_color or page.header.overlay_image %}
-        <header>
+        <header class="page-header{% unless page.title %} page-header--bare{% endunless %}">
           {% if page.title %}<h1 class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
           {% if page.read_time %}
             <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
           {% endif %}
-        {% if page.modified %}
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time></p>
-        {% endif %}
-        
-        {% if page.collection == 'portfolio' %}
-          <dl class="teach-meta">
-            {% if page.project_title %}
-              <div class="teach-meta__row"><dt>Title</dt><dd>{{ page.project_title }}</dd></div>
+          {% if page.collection == 'posts' and page.date %}
+            <p class="page-header__date"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></p>
+          {% endif %}
+          {% if page.modified %}
+            <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time></p>
+          {% endif %}
+
+          {% unless is_item %}
+            {% if page.venue and page.date %}
+              <p>Published in <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
+            {% elsif page.date %}
+              <dl class="teach-meta">
+                <div class="teach-meta__row"><dt>Date</dt><dd>{{ page.date | date: "%B %-d, %Y" }}</dd></div>
+              </dl>
             {% endif %}
-            {% if page.funding %}
-              <div class="teach-meta__row"><dt>Funding</dt><dd>{{ page.funding }}</dd></div>
-            {% endif %}
-            {% if page.date %}
-              <div class="teach-meta__row"><dt>Started</dt><dd>{{ page.date | date: "%B %Y" }}</dd></div>
-            {% endif %}
-            {% if page.repo %}
-              <div class="teach-meta__row"><dt>Repo</dt><dd><a href="{{ page.repo }}">{{ page.repo }}</a></dd></div>
-            {% endif %}
-            {% if page.link %}
-              <div class="teach-meta__row"><dt>Link</dt><dd><a href="{{ page.link }}">{{ page.link }}</a></dd></div>
-            {% endif %}
-          </dl>
-        {% elsif page.collection == 'teaching' %}
-          <dl class="teach-meta">
-            {% if page.type %}
-              <div class="teach-meta__row"><dt>Format</dt><dd>{{ page.type }}</dd></div>
-            {% endif %}
-            {% if page.venue %}
-              <div class="teach-meta__row"><dt>Venue</dt><dd>{{ page.venue }}</dd></div>
-            {% endif %}
-            {% if page.location %}
-              <div class="teach-meta__row"><dt>Location</dt><dd>{{ page.location }}</dd></div>
-            {% endif %}
-            <div class="teach-meta__row">
-              <dt>Period</dt>
-              <dd>{{ page.date | default: "1900-01-01" | date: "%Y" }}{% if page.ongoing %}–PT{% elsif page.end_date %}–{{ page.end_date }}{% endif %}</dd>
-            </div>
-          </dl>
-        {% elsif page.venue and page.date %}
-          <p>Published in <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
-        {% elsif page.date %}
-          <dl class="teach-meta">
-            <div class="teach-meta__row"><dt>Date</dt><dd>{{ page.date | date: "%B %-d, %Y" }}</dd></div>
-          </dl>
-        {% endif %}
+          {% endunless %}
         </header>
       {% endunless %}
 
       <section class="page__content" itemprop="text">
-        {{ content }}
+        {% if is_item %}
+          {% assign body = content | strip %}
 
-        {% if page.citation and page.paperurl and page.slidesurl and page.bibtexurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.slidesurl }}">Download Slides</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.citation and page.paperurl and page.slidesurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.slidesurl }}">Download Slides</a></p>
-        {% elsif page.citation and page.paperurl and page.bibtexurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.citation and page.paperurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a></p>
-        {% elsif page.citation and page.slidesurl and page.bibtexurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.slidesurl }}">Download Slides</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.citation and page.slidesurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.slidesurl }}">Download Slides</a></p>
-        {% elsif page.slidesurl and page.bibtexurl %}
-          <p style="font-size: smaller"><a href="{{ page.slidesurl }}">Download Slides</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.paperurl and page.bibtexurl %}
-          <p style="font-size: smaller"><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.citation and page.bibtexurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.citation %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}</p>
-        {% elsif page.slidesurl %}
-          <p style="font-size: smaller"><a href="{{ page.slidesurl }}">Download Slides</a></p>
-        {% elsif page.bibtexurl %}
-          <p style="font-size: smaller"><a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
+          {% if page.collection == 'publications' %}
+            <section class="panel">
+              <div class="panel__head">
+                <h2 class="panel__title">Record</h2>
+              </div>
+              <div class="panel__body">
+                <ul class="panel-specs">
+                  {% if page.venue %}
+                    <li><span class="panel-specs__key">Published in</span><span class="panel-specs__value">{{ page.venue }}</span></li>
+                  {% endif %}
+                  {% if page.date %}
+                    <li><span class="panel-specs__key">Date</span><span class="panel-specs__value"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></span></li>
+                  {% endif %}
+                  {% if page.citation %}
+                    <li><span class="panel-specs__key">Citation</span><span class="panel-specs__value">{{ page.citation }}</span></li>
+                  {% endif %}
+                </ul>
+                {% if page.paperurl or page.slidesurl or page.bibtexurl or page.link %}
+                  <div class="panel-actions">
+                    {% if page.paperurl %}<a class="panel-btn" href="{{ page.paperurl }}">Paper</a>{% endif %}
+                    {% if page.slidesurl %}<a class="panel-btn" href="{{ page.slidesurl }}">Slides</a>{% endif %}
+                    {% if page.bibtexurl %}<a class="panel-btn" href="{{ page.bibtexurl }}">BibTeX</a>{% endif %}
+                    {% if page.link %}<a class="panel-btn" href="{{ page.link }}">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a>{% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            </section>
+
+          {% elsif page.collection == 'teaching' %}
+            <section class="panel">
+              <div class="panel__head">
+                <h2 class="panel__title">Course</h2>
+              </div>
+              <div class="panel__body">
+                <ul class="panel-specs">
+                  {% if page.type %}
+                    <li><span class="panel-specs__key">Format</span><span class="panel-specs__value">{{ page.type }}</span></li>
+                  {% endif %}
+                  {% if page.venue %}
+                    <li><span class="panel-specs__key">Venue</span><span class="panel-specs__value">{{ page.venue }}</span></li>
+                  {% endif %}
+                  {% if page.location %}
+                    <li><span class="panel-specs__key">Location</span><span class="panel-specs__value">{{ page.location }}</span></li>
+                  {% endif %}
+                  <li><span class="panel-specs__key">Period</span><span class="panel-specs__value">{{ page.date | default: "1900-01-01" | date: "%Y" }}{% if page.ongoing %}–present{% elsif page.end_date %}–{{ page.end_date }}{% endif %}</span></li>
+                </ul>
+                {% if page.link %}
+                  <div class="panel-actions">
+                    <a class="panel-btn" href="{{ page.link }}">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a>
+                  </div>
+                {% endif %}
+              </div>
+            </section>
+
+          {% elsif page.collection == 'portfolio' %}
+            <section class="panel">
+              <div class="panel__head">
+                <h2 class="panel__title">Project</h2>
+              </div>
+              <div class="panel__body">
+                <ul class="panel-specs">
+                  {% if page.project_title %}
+                    <li><span class="panel-specs__key">Title</span><span class="panel-specs__value">{{ page.project_title }}</span></li>
+                  {% endif %}
+                  {% if page.funding %}
+                    <li><span class="panel-specs__key">Funding</span><span class="panel-specs__value">{{ page.funding }}</span></li>
+                  {% endif %}
+                  {% if page.date %}
+                    <li><span class="panel-specs__key">Started</span><span class="panel-specs__value"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %Y" }}</time></span></li>
+                  {% endif %}
+                  {% if page.repo %}
+                    <li><span class="panel-specs__key">Repo</span><span class="panel-specs__value"><a href="{{ page.repo }}">{{ page.repo }}</a></span></li>
+                  {% endif %}
+                </ul>
+                {% if page.link %}
+                  <div class="panel-actions">
+                    <a class="panel-btn" href="{{ page.link }}">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a>
+                  </div>
+                {% endif %}
+              </div>
+            </section>
+          {% endif %}
+
+          {% if page.toc_figure %}
+            <section class="panel">
+              <div class="panel__head">
+                <h2 class="panel__title">Graphical abstract</h2>
+              </div>
+              <div class="panel__body">
+                <figure class="panel-figure">
+                  <img src="{{ page.toc_figure | relative_url }}" alt="{{ page.toc_figure_alt | default: page.title | escape }}">
+                  {% if page.toc_figure_caption %}<figcaption>{{ page.toc_figure_caption }}</figcaption>{% endif %}
+                </figure>
+              </div>
+            </section>
+          {% endif %}
+
+          {% if body != '' %}
+            {% if page.collection == 'publications' %}
+              {% assign prose_title = 'Abstract' %}
+            {% elsif page.collection == 'posts' %}
+              {% assign prose_title = page.categories[0] | default: 'Entry' %}
+            {% else %}
+              {% assign prose_title = 'Overview' %}
+            {% endif %}
+            {% if page.collection == 'posts' and page.link %}
+              {% capture body_link %}<p><a href="{{ page.link }}">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></p>{% endcapture %}
+              {% assign body = body | append: body_link %}
+            {% endif %}
+            {% include panel-prose.html body=body title=prose_title %}
+          {% elsif page.excerpt and page.collection == 'publications' %}
+            <section class="panel">
+              <div class="panel__head">
+                <h2 class="panel__title">Summary</h2>
+              </div>
+              <div class="panel__body panel__body--prose">
+                <div class="panel-prose">{{ page.excerpt | markdownify }}</div>
+              </div>
+            </section>
+          {% endif %}
+
+          {% assign has_taxonomy = false %}
+          {% if site.tag_archive.type and page.tags[0] %}{% assign has_taxonomy = true %}{% endif %}
+          {% if site.category_archive.type and page.categories[0] and page.collection != 'publications' and page.collection != 'portfolio' %}{% assign has_taxonomy = true %}{% endif %}
+          {% if has_taxonomy %}
+            <section class="panel">
+              <div class="panel__head">
+                <h2 class="panel__title">Filed under</h2>
+              </div>
+              <div class="panel__body">
+                {% include page__taxonomy.html %}
+              </div>
+            </section>
+          {% endif %}
+        {% else %}
+          {{ content }}
+          {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
         {% endif %}
-
-        {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
 
-      {% unless page.collection == 'posts' %}
+      {% unless is_item %}
         <footer class="page__meta">
           {% if site.data.ui-text[site.locale].meta_label %}
             <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
@@ -119,7 +207,7 @@ layout: default
         </footer>
       {% endunless %}
 
-      {% unless page.collection == 'publications' or page.collection == 'teaching' or page.collection == 'portfolio' or page.collection == 'posts' %}
+      {% unless is_item %}
         {% if page.share %}{% include social-share.html %}{% endif %}
         {% include post_pagination.html %}
       {% endunless %}

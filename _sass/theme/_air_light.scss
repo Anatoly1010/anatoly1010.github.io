@@ -3,19 +3,21 @@
    ========================================================================== */
 
 /* Color codes used for the theme */
-$primary-color              : #2c5f7c;
-$dark-primary-color         : mix(#000, $primary-color, 40%);
-$darker-primary-color       : mix(#000, $primary-color, 60%);
-$light-primary-color        : mix(#000, $primary-color, 50%);
+$accent                     : #b5701f;
+$accent-2                   : #8e5716;
+$accent-soft                : rgba(181, 112, 31, 0.10);
+$primary-color              : $accent;
 
-$background                 : #f6f5f1;
-$background-light           : mix(#fff, $background, 20%);
-$background-lighter         : mix(#fff, $background, 90%);
-$text                       : #1f2933;
-$link                       : #2c5f7c;
-$link-dark                  : mix(#000, $link, 25%);
-$link-light                 : mix(#fff, $link, 25%);
-$footer                     : $primary-color;
+$background                 : #f4f6f7;
+$surface                    : #ffffff;
+$surface-2                  : #eceff1;
+$border                     : #d5dade;
+$border-strong              : #bcc4c9;
+$text                       : #12181c;
+$text-2                     : #4c585f;
+$text-3                     : #77848b;
+$link                       : $accent;
+$footer                     : $surface;
 
 /* Color codes used for the site */
 $danger-color               : #ee5f5b;
@@ -28,30 +30,40 @@ $warning-color              : #f89406;
 $border-radius              : 4px;
 $box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.125);
 $global-transition          : all 0.2s ease-in-out;
-$masthead-height            : 70px;
+$masthead-height            : 56px;
 $navicon-width              : 28px;
 $navicon-height             : 4px;
 $sidebar-link-max-width     : 250px;
 $sidebar-screen-min-width   : 1024px;
 
-/* Dark theme for the site */
+/* Light theme for the site */
 :root {
     --global-base-color                 : #{$background};
     --global-bg-color                   : #{$background};
+    --global-surface-color              : #{$surface};
+    --global-surface-2-color            : #{$surface-2};
     --global-footer-bg-color            : #{$footer};
-    --global-border-color               : #{$light-primary-color};
-    --global-dark-border-color          : #{$background-light};
-    --global-code-background-color      : #fafafa;
-    --global-code-text-color            : #{$darker-primary-color};
-    --global-fig-caption-color          : #{$light-primary-color};
+    --global-header-bg-color            : rgba(244, 246, 247, 0.88);
+    --global-border-color               : #{$border};
+    --global-dark-border-color          : #{$border};
+    --global-border-strong-color        : #{$border-strong};
+    --global-grid-line-color            : rgba(18, 24, 28, 0.05);
+    --global-code-background-color      : #{$surface-2};
+    --global-code-text-color            : #{$accent-2};
+    --global-fig-caption-color          : #{$text-3};
     --global-link-color                 : #{$link};
-    --global-link-color-hover           : #{$link-dark};
-    --global-link-color-visited         : #{$link-light};
-    --global-masthead-link-color        : #{$text};
-    --global-masthead-link-color-hover  : #{$link};
+    --global-link-color-hover           : #{$accent-2};
+    --global-link-color-visited         : #{$link};
+    --global-accent-soft-color          : #{$accent-soft};
+    --global-masthead-link-color        : #{$text-2};
+    --global-masthead-link-color-hover  : #{$accent};
     --global-text-color                 : #{$text};
-    --global-text-color-light           : #{$light-primary-color};
-    --global-thead-color                : #{$background-lighter};
-    --global-map-land                   : #d8dde3;
-    --global-map-border                 : #a8b0bc;
+    --global-text-color-light           : #{$text-2};
+    --global-text-color-2               : #{$text-2};
+    --global-text-color-3               : #{$text-3};
+    --global-thead-color                : #{$surface-2};
+    --global-map-land                   : #{$surface-2};
+    --global-map-border                 : #{$border-strong};
+    --global-shadow                     : 0 1px 1px rgba(18, 24, 28, 0.04), 0 1px 3px rgba(18, 24, 28, 0.05);
+    --global-shadow-hover               : 0 2px 4px rgba(18, 24, 28, 0.06), 0 8px 20px rgba(18, 24, 28, 0.08);
 }

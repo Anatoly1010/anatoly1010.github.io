@@ -6,29 +6,20 @@
   {% assign title = post.title %}
 {% endif %}
 
-<article class="pub-item" itemscope itemtype="http://schema.org/CreativeWork">
-  <div class="pub-item__year">{{ post.date | default: "1900-01-01" | date: "%Y" }}</div>
-
-  <div class="pub-item__body">
-    <h3 class="pub-item__title" itemprop="headline">
-      <a href="{{ base_path }}{{ post.url }}">{{ title }}</a>
-    </h3>
-
-    <p class="pub-item__cite">
-      {% if post.type %}{{ post.type }}{% endif %}
-      {% if post.venue %} &middot; <em>{{ post.venue }}</em>{% endif %}
-      {% if post.location %} &middot; {{ post.location }}{% endif %}
-      &middot; {{ post.date | date: "%B %Y" }}
-    </p>
-
-    {% if post.excerpt %}
-      <p class="pub-item__excerpt" itemprop="description">{{ post.excerpt | strip_html | truncate: 220 }}</p>
+<li>
+  <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%Y-%m-%d" }}</time>
+  <div class="panel-news__body">
+    <a class="panel-news__title" href="{{ base_path }}{{ post.url }}">{{ title }}</a>
+    <span class="panel-news__meta">
+      {%- if post.type %}{{ post.type }}{% endif -%}
+      {%- if post.venue %} &middot; <i>{{ post.venue }}</i>{% endif -%}
+      {%- if post.location %} &middot; {{ post.location }}{% endif -%}
+    </span>
+    {% if post.slidesurl or post.videourl %}
+      <p class="panel-links">
+        {% if post.slidesurl %}<a href="{{ post.slidesurl }}">Slides</a>{% endif %}
+        {% if post.videourl %}<a href="{{ post.videourl }}">Video</a>{% endif %}
+      </p>
     {% endif %}
-
-    <p class="pub-item__links">
-      {% if post.slidesurl %}<a class="pub-link" href="{{ post.slidesurl }}">Slides</a>{% endif %}
-      {% if post.videourl %}<a class="pub-link" href="{{ post.videourl }}">Video</a>{% endif %}
-      <a class="pub-link pub-link--ghost" href="{{ base_path }}{{ post.url }}">Details</a>
-    </p>
   </div>
-</article>
+</li>

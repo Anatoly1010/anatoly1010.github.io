@@ -1,18 +1,48 @@
 {% include base_path %}
 
 <div class="site-footer">
-  <div class="site-footer__copyright">
-    &copy; {{ site.time | date: '%Y' }} Anatoly Melnikov &middot;
-    <span class="site-footer__meta">Updated {{ "now" | date: '%Y-%m-%d' }}</span>
+  <div class="site-footer__grid">
+
+    <div class="site-footer__about">
+      <b>{{ site.author.name }}</b>
+      <p>
+        <span>Senior Researcher, EPR laboratory, ITC</span>
+        <span>Associate Professor, Department of Natural Sciences, NSU</span>
+        <span>Associate Editor, Journal of Open Research Software</span>
+      </p>
+    </div>
+
+    <div class="site-footer__col">
+      <h3>Explore</h3>
+      <ul>
+        {% for link in site.data.navigation.main %}
+          {% if link.url contains 'http' %}{% assign domain = '' %}{% else %}{% assign domain = base_path %}{% endif %}
+          <li><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="site-footer__col">
+      <h3>Connect</h3>
+      <ul>
+        {% if site.author.googlescholar %}<li><a href="{{ site.author.googlescholar }}">Google Scholar</a></li>{% endif %}
+        {% if site.author.orcid %}<li><a href="{{ site.author.orcid }}">ORCID</a></li>{% endif %}
+        {% if site.author.researchgate %}<li><a href="{{ site.author.researchgate }}">Research Gate</a></li>{% endif %}
+        {% if site.author.scopus %}<li><a href="{{ site.author.scopus }}">Scopus</a></li>{% endif %}
+        {% if site.author.github %}<li><a href="https://github.com/{{ site.author.github }}">GitHub</a></li>{% endif %}
+        {% if site.author.telegram_channel %}<li><a href="https://t.me/{{ site.author.telegram_channel }}">Telegram</a></li>{% endif %}
+        {% if site.author.email %}<li><a href="mailto:{{ site.author.email }}">Email</a></li>{% endif %}
+      </ul>
+    </div>
+
   </div>
 
-  <ul class="site-footer__links">
-    {% if site.author.github %}
-      <li><a href="https://github.com/{{ site.author.github }}" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
-    {% endif %}
+  <div class="site-footer__bottom">
+    <span>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}</span>
+    <span>Updated {{ "now" | date: '%Y-%m-%d' }}</span>
+    <a href="{{ base_path }}/sitemap/">Sitemap</a>
     {% if site.atom_feed.hide != true %}
-      <li><a href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ base_path }}/feed.xml{% endif %}" aria-label="Feed"><i class="fa fa-rss" aria-hidden="true"></i> Feed</a></li>
+      <a href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ base_path }}/feed.xml{% endif %}">Feed</a>
     {% endif %}
-    <li><a href="{{ base_path }}/sitemap/">Sitemap</a></li>
-  </ul>
+  </div>
 </div>

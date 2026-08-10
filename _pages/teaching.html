@@ -2,11 +2,40 @@
 layout: archive
 title: "Teaching"
 permalink: /teaching/
-author_profile: true
+lead: "Lecture courses, seminars and teaching materials."
 ---
 
 {% include base_path %}
 
-{% for post in site.teaching reversed %}
-  {% include archive-single-teaching.html %}
-{% endfor %}
+<section class="panel">
+  <div class="panel__head">
+    <h2 class="panel__title">Courses</h2>
+    <span class="panel__count">{{ site.teaching.size }}</span>
+  </div>
+  <div class="panel__body">
+    <ul class="panel-specs">
+      {% for post in site.teaching reversed %}
+        {% include archive-single-teaching.html %}
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="panel__head">
+    <h2 class="panel__title">Books</h2>
+    <a class="panel__see-all" href="https://github.com/Anatoly1010/book_of_exercises">Source →</a>
+  </div>
+  <div class="panel__body">
+    <p class="panel-desc">A problem book written for the "Structure of Matter" course: exercises with solutions covering the topics of the annual lecture series. Written in Russian, typeset in LaTeX, and kept in the open on GitHub, so corrections and additions arrive with each term.</p>
+    <ul class="panel-specs">
+      <li><span class="panel-specs__key">Course</span><span class="panel-specs__value">Structure of Matter</span></li>
+      <li><span class="panel-specs__key">Language</span><span class="panel-specs__value">Russian</span></li>
+      <li><span class="panel-specs__key">Format</span><span class="panel-specs__value">PDF, freely available</span></li>
+    </ul>
+    <div class="panel-actions">
+      <a class="panel-btn" href="{{ base_path }}/files/zadachnik.pdf">Download PDF</a>
+      <a class="panel-btn" href="https://github.com/Anatoly1010/book_of_exercises">Repository</a>
+    </div>
+  </div>
+</section>
