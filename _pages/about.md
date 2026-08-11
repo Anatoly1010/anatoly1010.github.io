@@ -7,6 +7,9 @@ redirect_from:
 
 <section class="home-hero">
   <div class="home-hero__inner">
+    <div class="home-portrait">
+      <img class="home-portrait__light" src="{{ '/images/bio-halftone.png' | relative_url }}" alt="Portrait of {{ site.author.name }}">
+    </div>
     <div class="home-hero__main">
       <p class="home-eyebrow">Magnetic resonance · Pulsed EPR · Instrumentation · Software</p>
       <h1 class="home-name">{{ site.title }}</h1>
@@ -21,9 +24,6 @@ redirect_from:
         {% if site.author.telegram_channel %}{% if sep %}<span class="home-links__dot">·</span>{% endif %}<a href="https://t.me/{{ site.author.telegram_channel }}">Telegram</a>{% assign sep = '1' %}{% endif %}
         {% if site.author.email %}{% if sep %}<span class="home-links__dot">·</span>{% endif %}<a href="mailto:{{ site.author.email }}">Email</a>{% endif %}
       </p>
-    </div>
-    <div class="home-portrait">
-      <img class="home-portrait__light" src="{{ '/images/bio-halftone.png' | relative_url }}" alt="Portrait of {{ site.author.name }}">
     </div>
   </div>
 </section>

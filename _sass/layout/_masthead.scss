@@ -135,6 +135,15 @@ html[data-theme="dark"] .masthead__toggle-label {
 }
 
 @media (max-width: 640px) {
+  /* wrapped onto several rows the bar is taller than the reserved space, so it takes its own */
+  body {
+    padding-top: 0;
+  }
+
+  .masthead {
+    position: sticky;
+  }
+
   .masthead__inner-wrap {
     height: auto;
     padding-top: 9px;
@@ -143,20 +152,27 @@ html[data-theme="dark"] .masthead__toggle-label {
     gap: 8px;
   }
 
-  .masthead__nav a {
-    padding: 5px 6px;
-    font-size: 11.5px;
+  /* Home and the toggle share the first row, the nav gets the full width below */
+  .masthead__mark {
+    order: 1;
   }
 
   .masthead__toggle {
+    order: 2;
+    margin-left: auto;
     padding: 0 8px;
   }
 
-  .masthead__toggle-label {
-    display: none;
+  .masthead__nav {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+    justify-content: flex-start;
+    gap: 2px 8px;
   }
 
-  html[data-theme="dark"] .masthead__toggle-label--to-light {
-    display: none;
+  .masthead__nav a {
+    padding: 5px 5px;
+    font-size: 11.5px;
   }
 }

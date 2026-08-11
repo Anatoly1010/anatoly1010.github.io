@@ -96,6 +96,7 @@
   }
 
   .home-portrait {
+    order: 2;
     flex: none;
     width: 132px;
     height: 132px;
@@ -157,14 +158,20 @@ html[data-theme="dark"] .home-hero .home-portrait {
 }
 
 @media (max-width: 640px) {
+  /* the heading wraps around the portrait, the rest of the hero runs full width below it */
   .home-hero .home-hero__inner {
-    flex-direction: row-reverse;
-    gap: 16px;
+    display: block;
   }
 
   .home-hero .home-portrait {
-    width: 78px;
-    height: 78px;
+    float: left;
+    width: 88px;
+    height: 88px;
+    margin: 2px 14px 8px 0;
+  }
+
+  .home-hero .home-statement {
+    clear: left;
   }
 
   .home-grid {
