@@ -58,7 +58,7 @@ Two theme rules underline every link inside `.page__content` and `.archive`. Pan
 
 ## Adding content
 
-- **Publication** — a file in `_publications/`. `category: manuscripts` lands it in the year panels; `category: preprints` puts it in the Preprints panel on the Publications page instead. The Publications page splits `citation` on the quoted title to show authors and venue separately, so keep the existing citation format.
+- **Publication** — a file in `_publications/`. `category: manuscripts` lands it in the year panels; `category: preprints` puts it in the Preprints panel on the Publications page instead, `category: patents` in the Patents panel. The Publications page splits `citation` on the quoted title to show authors and venue separately, so keep the existing citation format.
 - **Talk** — a file in `_talks/`. Adding `lat`/`lng` puts a dot on the map.
 - **Teaching** — a file in `_teaching/`. `###` sections in the body each become their own panel automatically.
 - **Post** — a file in `_posts/`. `categories: [news]` also surfaces it on the home page. The four newest posts appear as cards on the Blog page.

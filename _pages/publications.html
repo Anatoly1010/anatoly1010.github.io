@@ -8,7 +8,8 @@ lead: "Peer-reviewed papers and conference contributions, grouped by year."
 {% include base_path %}
 
 {% assign preprints = site.publications | where: 'category', 'preprints' | sort: 'date' | reverse %}
-{% assign papers = site.publications | where_exp: 'p', "p.category != 'preprints'" %}
+{% assign patents = site.publications | where: 'category', 'patents' | sort: 'date' | reverse %}
+{% assign papers = site.publications | where_exp: 'p', "p.category != 'preprints' and p.category != 'patents'" %}
 {% assign by_year = papers | group_by_exp: 'p', 'p.date | date: "%Y"' | sort: 'name' %}
 
 {% if by_year.size > 0 %}
@@ -39,6 +40,22 @@ lead: "Peer-reviewed papers and conference contributions, grouped by year."
       <div class="panel__body">
         <ol class="panel-pubs">
           {% for post in preprints %}
+            {% include archive-single-publication.html %}
+          {% endfor %}
+        </ol>
+      </div>
+    </section>
+  {% endif %}
+
+  {% if patents.size > 0 %}
+    <section class="panel">
+      <div class="panel__head">
+        <h2 class="panel__title">Patents</h2>
+        <span class="panel__count">{{ patents.size }} item{% if patents.size != 1 %}s{% endif %}</span>
+      </div>
+      <div class="panel__body">
+        <ol class="panel-pubs">
+          {% for post in patents %}
             {% include archive-single-publication.html %}
           {% endfor %}
         </ol>
