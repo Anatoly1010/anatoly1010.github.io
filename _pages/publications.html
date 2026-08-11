@@ -9,7 +9,7 @@ lead: "Peer-reviewed papers and conference contributions, grouped by year."
 
 {% assign preprints = site.publications | where: 'category', 'preprints' | sort: 'date' | reverse %}
 {% assign patents = site.publications | where: 'category', 'patents' | sort: 'date' | reverse %}
-{% assign papers = site.publications | where_exp: 'p', "p.category != 'preprints' and p.category != 'patents'" %}
+{% assign papers = site.publications | where_exp: 'p', "p.category != 'preprints'" | where_exp: 'p', "p.category != 'patents'" %}
 {% assign by_year = papers | group_by_exp: 'p', 'p.date | date: "%Y"' | sort: 'name' %}
 
 {% if by_year.size > 0 %}
@@ -24,6 +24,7 @@ lead: "Peer-reviewed papers and conference contributions, grouped by year."
     <div class="panel__body">
       <ul class="panel-stats">
         <li><b>{{ papers.size }}</b><i>Publications</i></li>
+        {% if patents.size > 0 %}<li><b>{{ patents.size }}</b><i>Patent{% if patents.size != 1 %}s{% endif %}</i></li>{% endif %}
         {% if site.author.citations %}<li><b>{{ site.author.citations }}</b><i>Citations</i></li>{% endif %}
         {% if site.author.h_index %}<li><b>{{ site.author.h_index }}</b><i>h-index</i></li>{% endif %}
         <li><b>{{ first_year }}–{{ last_year }}</b><i>Publishing since</i></li>
