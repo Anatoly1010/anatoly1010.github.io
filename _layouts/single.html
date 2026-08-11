@@ -74,6 +74,9 @@ layout: default
                   {% if page.citation %}
                     <li><span class="panel-specs__key">Citation</span><span class="panel-specs__value">{{ page.citation }}</span></li>
                   {% endif %}
+                  {% if page.note %}
+                    <li><span class="panel-specs__key">Note</span><span class="panel-specs__value">{{ page.note }}</span></li>
+                  {% endif %}
                 </ul>
                 {% if page.paperurl or page.slidesurl or page.bibtexurl or page.link %}
                   <div class="panel-actions">
@@ -125,7 +128,12 @@ layout: default
                   {% if page.funding %}
                     <li><span class="panel-specs__key">Funding</span><span class="panel-specs__value">{{ page.funding }}</span></li>
                   {% endif %}
-                  {% if page.date %}
+                  {% if page.role %}
+                    <li><span class="panel-specs__key">Role</span><span class="panel-specs__value">{{ page.role }}</span></li>
+                  {% endif %}
+                  {% if page.period %}
+                    <li><span class="panel-specs__key">Period</span><span class="panel-specs__value">{{ page.period }}</span></li>
+                  {% elsif page.date %}
                     <li><span class="panel-specs__key">Started</span><span class="panel-specs__value"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %Y" }}</time></span></li>
                   {% endif %}
                   {% if page.repo %}

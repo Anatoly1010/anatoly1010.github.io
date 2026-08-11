@@ -27,6 +27,10 @@ redirect_from:
           <span class="panel-news__title">Ph.D., Physical Chemistry</span>
           <span class="panel-news__detail">Voevodsky Institute of Chemical Kinetics and Combustion, SB RAS</span>
           <span class="panel-news__detail">Thesis: Magnetosensitive luminescence of exciplexes, formed under the recombination of radiation-generated radical ion pairs in non-polar solutions.</span>
+          <p class="panel-links">
+            <a href="{{ base_path }}/files/melnikov-phd-thesis-2016.pdf">Thesis (PDF)</a>
+            <a href="{{ base_path }}/files/melnikov-phd-abstract-2016.pdf">Extended abstract (PDF)</a>
+          </p>
         </div>
       </li>
       <li>
@@ -79,6 +83,127 @@ redirect_from:
         <div class="panel-news__body">
           <span class="panel-news__title">Voevodsky Institute of Chemical Kinetics and Combustion</span>
           <span class="panel-news__detail">Laboratory of fast proceeded processes</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="panel__head">
+    <h2 class="panel__title">Awards</h2>
+  </div>
+  <div class="panel__body">
+    <ul class="panel-news">
+      <li>
+        <span class="panel-news__date">2017</span>
+        <div class="panel-news__body">
+          <span class="panel-news__title">Second place, competition of scientific works</span>
+          <span class="panel-news__detail">Voevodsky Institute of Chemical Kinetics and Combustion</span>
+          <span class="panel-news__detail">Magnetosensitive luminescence of exciplexes, formed under the recombination of radiation generated radical ion pairs</span>
+        </div>
+      </li>
+      <li>
+        <span class="panel-news__date">2012–2013</span>
+        <div class="panel-news__body">
+          <span class="panel-news__title">Academician Voevodsky's scholarship</span>
+          <span class="panel-news__detail">The best result in the studying of physical chemistry</span>
+        </div>
+      </li>
+      <li>
+        <span class="panel-news__date">2011</span>
+        <div class="panel-news__body">
+          <span class="panel-news__title">Academician Boreskov's scholarship</span>
+          <span class="panel-news__detail">The best result in the studying of chemical kinetics and chemical thermodynamics</span>
+        </div>
+      </li>
+      <li>
+        <span class="panel-news__date">2011</span>
+        <div class="panel-news__body">
+          <span class="panel-news__title">Academician Nikolaev's scholarship</span>
+          <span class="panel-news__detail">The best result in the studying of analytical chemistry</span>
+        </div>
+      </li>
+      <li>
+        <span class="panel-news__date">2010</span>
+        <div class="panel-news__body">
+          <span class="panel-news__title">Academician Vorozhtsov's scholarship</span>
+          <span class="panel-news__detail">The best result in the studying of organic chemistry</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="panel__head">
+    <h2 class="panel__title">Grants</h2>
+    <a class="panel__see-all" href="{{ base_path }}/portfolio/">All projects →</a>
+  </div>
+  <div class="panel__body">
+    <ul class="panel-news">
+      {% assign grants = site.portfolio | sort: "date" | reverse %}
+      {% for post in grants %}
+        {% include archive-single-portfolio.html %}
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="panel__head">
+    <h2 class="panel__title">Peer review</h2>
+    <span class="panel__count">7 manuscripts</span>
+  </div>
+  <div class="panel__body">
+    <ul class="panel-news">
+      <li>
+        <span class="panel-news__date">2026</span>
+        <div class="panel-news__body">
+          <span class="panel-news__title">ACS Physical Chemistry Au</span>
+          <span class="panel-news__detail">Insights into X-band FATHOM instrumentation for pulse dipolar EPR spectroscopy on membrane proteins</span>
+        </div>
+      </li>
+      <li>
+        <span class="panel-news__date">2026</span>
+        <div class="panel-news__body">
+          <span class="panel-news__title">Journal of Open Source Software</span>
+          <span class="panel-news__detail">lys_instr: a Python package for automating scientific measurements</span>
+        </div>
+      </li>
+      <li>
+        <span class="panel-news__date">2026</span>
+        <div class="panel-news__body">
+          <span class="panel-news__title">Journal of Open Research Software</span>
+          <span class="panel-news__detail">MSwD-PS: an open-source Matlab toolbox for robust fMRI time-varying functional connectivity analysis using multivariate swarm decomposition</span>
+        </div>
+      </li>
+      <li>
+        <span class="panel-news__date">2021</span>
+        <div class="panel-news__body">
+          <span class="panel-news__title">Molecules</span>
+          <span class="panel-news__detail">Asymmetrically tetra-substituted metal-free and zinc(II) phthalocyanine derivatives: synthesis, photophysical and photochemical properties</span>
+        </div>
+      </li>
+      <li>
+        <span class="panel-news__date">2021</span>
+        <div class="panel-news__body">
+          <span class="panel-news__title">Molecules</span>
+          <span class="panel-news__detail">Systematic studies on the effect of fluorine atoms in fluorinated tolanes on their photophysical properties</span>
+        </div>
+      </li>
+      <li>
+        <span class="panel-news__date">2020</span>
+        <div class="panel-news__body">
+          <span class="panel-news__title">Physical Chemistry Chemical Physics</span>
+          <span class="panel-news__detail">Development of lock-in based overtone modulated MARY spectroscopy for detection of weak magnetic field effects</span>
+        </div>
+      </li>
+      <li>
+        <span class="panel-news__date">2018</span>
+        <div class="panel-news__body">
+          <span class="panel-news__title">Chemical Physics Letters</span>
+          <span class="panel-news__detail">Addressing the anomalous negative magnetic field effect on exciplex luminescence at very high permittivity: studies in perylene-dimethylaniline system</span>
         </div>
       </li>
     </ul>

@@ -61,7 +61,7 @@ Two theme rules underline every link inside `.page__content` and `.archive`. Pan
 - **Publication** — a file in `_publications/`. `category: manuscripts` lands it in the year panels; `category: preprints` puts it in the Preprints panel on the Publications page instead. The Publications page splits `citation` on the quoted title to show authors and venue separately, so keep the existing citation format.
 - **Talk** — a file in `_talks/`. Adding `lat`/`lng` puts a dot on the map.
 - **Teaching** — a file in `_teaching/`. `###` sections in the body each become their own panel automatically.
-- **Post** — a file in `_posts/`. `categories: [news]` also surfaces it on the home page. The four newest posts appear as cards on the Blog Posts page.
+- **Post** — a file in `_posts/`. `categories: [news]` also surfaces it on the home page. The four newest posts appear as cards on the Blog page.
 - **Graphical abstract** — optional on any post: `toc_figure: /images/toc/name.jpg`, plus `toc_figure_alt` and `toc_figure_caption`. Shows as a panel on the post and a thumbnail on its card.
 - **Citations and h-index** — `author.citations` and `author.h_index` in `_config.yml`, shown on the Publications page. Update them by hand from Google Scholar.
 - **Profile links** — `author.*` in `_config.yml`. The footer and hero render each only if its field is set.

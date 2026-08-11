@@ -8,6 +8,7 @@
 
 <li>
   <a class="panel-pubs__title" href="{{ base_path }}{{ post.url }}">{{ title }}</a>
+  {% if post.note %}<span class="panel-pubs__note">{{ post.note }}</span>{% endif %}
   {% assign bits = post.citation | split: '&quot;' %}
   {% if bits.size > 2 %}
     <span class="panel-pubs__authors">{{ bits[0] | strip }}</span>

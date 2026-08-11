@@ -16,7 +16,8 @@ redirect_from:
   </div>
   <div class="panel__body">
     <ul class="panel-news">
-      {% for post in site.portfolio reversed %}
+      {% assign projects = site.portfolio | sort: "date" | reverse %}
+      {% for post in projects %}
         {% include archive-single-portfolio.html %}
       {% endfor %}
     </ul>

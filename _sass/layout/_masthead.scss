@@ -135,9 +135,10 @@ html[data-theme="dark"] .masthead__toggle-label {
 }
 
 @media (max-width: 640px) {
-  /* wrapped onto several rows the bar is taller than the reserved space, so it takes its own */
+  /* wrapped onto several rows the bar is taller than the reserved space, so it takes its own.
+     !important beats the inline padding-top that greedy-nav sets on body */
   body {
-    padding-top: 0;
+    padding-top: 0 !important;
   }
 
   .masthead {

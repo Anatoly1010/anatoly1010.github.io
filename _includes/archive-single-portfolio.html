@@ -7,10 +7,12 @@
 {% endif %}
 
 <li>
-  <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%Y" }}</time>
+  <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{% if post.period %}{{ post.period }}{% else %}{{ post.date | default: "1900-01-01" | date: "%Y" }}{% endif %}</time>
   <div class="panel-news__body">
     <a class="panel-news__title" href="{{ base_path }}{{ post.url }}">{{ title }}</a>
     {% if post.project_title %}<span class="panel-news__detail">{{ post.project_title }}</span>{% endif %}
+    {% if post.funding %}<span class="panel-news__detail">{{ post.funding }}</span>{% endif %}
+    {% if post.role %}<span class="panel-news__detail">{{ post.role }}</span>{% endif %}
     <p class="panel-links">
       {% if post.repo %}<a href="{{ post.repo }}">Repo</a>{% endif %}
       {% if post.link %}<a href="{{ post.link }}">Project page</a>{% endif %}

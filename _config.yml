@@ -51,6 +51,7 @@ author:
   codepen          : # Username
   dribbble         : # Username
   github           : "Anatoly1010"
+  atomize_stars    : 38  # GitHub stars on Atomize, shown on the Software page
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 

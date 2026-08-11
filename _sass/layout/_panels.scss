@@ -95,6 +95,11 @@
   color: var(--global-link-color);
 }
 
+/* the Paper/BibTeX/Details row stays accented once visited, unlike panel titles */
+.panel__body .panel-links a:visited {
+  color: var(--global-link-color);
+}
+
 .panel__body {
   padding: 6px 16px 14px;
 
@@ -141,6 +146,7 @@
     }
 
     /* keeps ragged year ranges in one column */
+    time,
     .panel-news__date {
       min-width: 72px;
     }
@@ -232,6 +238,19 @@
     color: var(--global-text-color-2);
     margin-top: 2px;
     overflow-wrap: anywhere;
+  }
+
+  .panel-pubs__note {
+    display: inline-block;
+    margin-top: 4px;
+    padding: 1px 7px;
+    border: 1px solid var(--global-link-color);
+    border-radius: 3px;
+    font-family: $monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--global-link-color);
   }
 
   .panel-pubs__meta {
@@ -494,17 +513,44 @@
     padding: 14px 16px 16px;
   }
 
+  /* fills the card so every figure column is the same height across a row */
+  .post-card__main {
+    display: flex;
+    align-items: stretch;
+    flex: 1;
+  }
+
   .post-card__figure {
-    display: block;
-    border-bottom: 1px solid var(--global-border-color);
+    flex: none;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid var(--global-border-color);
     background: var(--global-surface-2-color);
 
     img {
       display: block;
       width: 100%;
-      height: 150px;
+      max-height: 190px;
       object-fit: contain;
       padding: 10px;
+    }
+  }
+
+  /* narrow cards: figure back on top so the text keeps a readable measure */
+  @media (max-width: 520px) {
+    .post-card__main {
+      display: block;
+    }
+
+    .post-card__figure {
+      width: auto;
+      border-right: 0;
+      border-bottom: 1px solid var(--global-border-color);
+
+      img {
+        height: 150px;
+      }
     }
   }
 
@@ -523,7 +569,7 @@
 
   .post-card__excerpt {
     margin: 8px 0 0;
-    font-size: 13.5px;
+    font-size: 12.5px;
     line-height: 1.5;
     color: var(--global-text-color-2);
   }
