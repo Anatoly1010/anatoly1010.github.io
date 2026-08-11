@@ -48,22 +48,6 @@ lead: "Peer-reviewed papers and conference contributions, grouped by year."
     </section>
   {% endif %}
 
-  {% if patents.size > 0 %}
-    <section class="panel">
-      <div class="panel__head">
-        <h2 class="panel__title">Patents</h2>
-        <span class="panel__count">{{ patents.size }} item{% if patents.size != 1 %}s{% endif %}</span>
-      </div>
-      <div class="panel__body">
-        <ol class="panel-pubs">
-          {% for post in patents %}
-            {% include archive-single-publication.html %}
-          {% endfor %}
-        </ol>
-      </div>
-    </section>
-  {% endif %}
-
   {% assign years_desc = by_year | sort: 'name' | reverse %}
   {% for group in years_desc %}
     <section class="panel">
@@ -81,4 +65,20 @@ lead: "Peer-reviewed papers and conference contributions, grouped by year."
       </div>
     </section>
   {% endfor %}
+
+  {% if patents.size > 0 %}
+    <section class="panel">
+      <div class="panel__head">
+        <h2 class="panel__title">Patents</h2>
+        <span class="panel__count">{{ patents.size }} item{% if patents.size != 1 %}s{% endif %}</span>
+      </div>
+      <div class="panel__body">
+        <ol class="panel-pubs">
+          {% for post in patents %}
+            {% include archive-single-publication.html %}
+          {% endfor %}
+        </ol>
+      </div>
+    </section>
+  {% endif %}
 {% endif %}
