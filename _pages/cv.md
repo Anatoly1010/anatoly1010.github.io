@@ -38,6 +38,10 @@ redirect_from:
         <div class="panel-news__body">
           <span class="panel-news__title">Specialist Degree</span>
           <span class="panel-news__detail">Department of Natural Sciences, Novosibirsk State University</span>
+          <span class="panel-news__detail">Thesis: A study of the luminescence spectra of donor–acceptor systems under X-ray irradiation.</span>
+          <p class="panel-links">
+            <a href="{{ base_path }}/files/melnikov-specialist-thesis-2013.pdf">Thesis (PDF)</a>
+          </p>
         </div>
       </li>
     </ul>
