@@ -20,8 +20,10 @@ A personal webpage. Jekyll, built on Academic Pages (Minimal Mistakes lineage), 
 ## Local preview
 
 ```
-bundle exec jekyll serve --livereload --port 4000 --host 127.0.0.1
+bundle exec jekyll serve --livereload --port 4001 --host 127.0.0.1
 ```
+
+Use port 4001, not 4000: NoMachine's `nxd` already listens on 4000 and the bind fails.
 
 Gems live in `vendor/bundle/`. The server watches files and rebuilds on save.
 

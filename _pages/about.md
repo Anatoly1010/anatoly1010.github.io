@@ -85,7 +85,7 @@ redirect_from:
   <div class="panel__body">
     <p class="panel-desc">Associate Professor at the Department of Natural Sciences,<br>Novosibirsk State University.</p>
     <ul class="panel-specs">
-      {% assign courses = site.teaching | sort: "date" | reverse %}
+      {% assign courses = site.teaching | where: "ongoing", true | sort: "date" | reverse %}
       {% for course in courses %}
       <li>
         <span class="panel-specs__key"><a href="{{ course.url | relative_url }}">{{ course.title }}</a></span>
