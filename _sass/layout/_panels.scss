@@ -96,7 +96,8 @@
 }
 
 /* the Paper/BibTeX/Details row stays accented once visited, unlike panel titles */
-.panel__body .panel-links a:visited {
+.panel__body .panel-links a:visited,
+.panel__body .panel-prose a:visited {
   color: var(--global-link-color);
 }
 
@@ -467,12 +468,6 @@
     }
   }
 
-}
-
-/* prose links keep the underline the rest of the page content has */
-.page__content .panel__body .panel-prose a:not(.panel-btn) {
-  text-decoration: underline;
-  text-underline-offset: 2px;
 }
 
 /* mono date line under a page title */
