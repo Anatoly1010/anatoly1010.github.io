@@ -37,3 +37,23 @@ lead: "Open-source software I develop and maintain."
     </div>
   </div>
 </section>
+
+<section class="panel">
+  <div class="panel__head">
+    <h2 class="panel__title">SpinCorePCI_no_sudo</h2>
+    <a class="panel__see-all" href="https://github.com/Anatoly1010/SpinCorePCI_no_sudo">GitHub →</a>
+  </div>
+  <div class="panel__body">
+    <p class="panel-desc">Runs SpinCore PulseBlasterESR-PRO PCI boards on Linux without sudo. The vendor library reaches the card through x86 I/O ports, which normally forces the whole experiment to run as root. A small launcher carries that single privilege, and nothing else, into the program it starts, so the control software and the worker processes that talk to the card stay unprivileged.</p>
+    <ul class="panel-specs">
+      <li><span class="panel-specs__key">Role</span><span class="panel-specs__value">Author</span></li>
+      <li><span class="panel-specs__key">Language</span><span class="panel-specs__value">C and shell</span></li>
+      <li><span class="panel-specs__key">Devices</span><span class="panel-specs__value">SpinCore PulseBlasterESR-PRO PCI</span></li>
+      <li><span class="panel-specs__key">Requires</span><span class="panel-specs__value">Linux 4.3 or newer, a C compiler and libcap; sudo once, at install time</span></li>
+      <li><span class="panel-specs__key">Used with</span><span class="panel-specs__value">Atomize, on our pulsed EPR spectrometers</span></li>
+    </ul>
+    <div class="panel-actions">
+      <a class="panel-btn" href="https://github.com/Anatoly1010/SpinCorePCI_no_sudo">Repository</a>
+    </div>
+  </div>
+</section>
