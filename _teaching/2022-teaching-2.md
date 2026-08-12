@@ -18,6 +18,7 @@ Fundamental annual course on the structure of matter for third-year students.
 - [Lecture notes, Term 1](https://disk.yandex.ru/d/OYf5kqYudebEZw)
 - [Lecture notes, Term 2](https://disk.yandex.ru/d/2u89KeBra28ilA)
 - [Literature](https://disk.yandex.ru/d/VMvGKc-aCud5Wg)
+- [Review of students, from 2023](https://docs.google.com/document/d/1wXu2XSPQacO4mwf1W60LI7NNsTmowSN7bSVDIwxYq0Q/edit?tab=t.0)
 
 ### History
 

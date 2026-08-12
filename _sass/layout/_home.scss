@@ -45,6 +45,10 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--global-text-color-3);
+
+    .home-eyebrow__br {
+      display: none;
+    }
   }
 
   .home-name {
@@ -168,6 +172,15 @@ html[data-theme="dark"] .home-hero .home-portrait {
     width: 88px;
     height: 88px;
     margin: 2px 14px 8px 0;
+  }
+
+  /* Software takes its own line, so the heading block matches the portrait */
+  .home-hero .home-eyebrow .home-eyebrow__sep {
+    display: none;
+  }
+
+  .home-hero .home-eyebrow .home-eyebrow__br {
+    display: inline;
   }
 
   .home-hero .home-statement {

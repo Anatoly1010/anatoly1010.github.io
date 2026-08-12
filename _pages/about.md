@@ -11,7 +11,7 @@ redirect_from:
       <img class="home-portrait__light" src="{{ '/images/bio-halftone.png' | relative_url }}" alt="Portrait of {{ site.author.name }}">
     </div>
     <div class="home-hero__main">
-      <p class="home-eyebrow">Magnetic resonance · Pulsed EPR · Instrumentation · Software</p>
+      <p class="home-eyebrow">Magnetic resonance · Pulsed EPR · Instrumentation<span class="home-eyebrow__sep"> · </span><br class="home-eyebrow__br">Software</p>
       <h1 class="home-name">{{ site.title }}</h1>
       <p class="home-role">Senior Researcher, EPR laboratory <span class="home-role__sep">/</span> International Tomography Center, Novosibirsk, Russia</p>
       <p class="home-statement">I use pulsed EPR spectroscopy and terahertz radiation to study single-molecule magnets, and write the open-source software that runs the experiments.</p>
