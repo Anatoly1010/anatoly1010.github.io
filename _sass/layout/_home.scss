@@ -20,6 +20,7 @@ $signal-period: 10s;
 
 /* the hero bleeds to the viewport edges so its ruling runs full width */
 .home-hero {
+  position: relative;
   margin-top: -2em;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
@@ -28,6 +29,17 @@ $signal-period: 10s;
   /* ruled from the bottom up, so the closing rule falls on the beat and the odd
      remainder ends up at the top edge instead of beside the trace */
   background: linear-gradient(var(--global-grid-line-color) 1px, transparent 1px) 0 100% / 100% 28px;
+
+  /* one more beat of the ruling, closing the channel the trace runs in */
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -29px;
+    height: 1px;
+    background: var(--global-border-color);
+  }
 
   .home-hero__inner {
     display: flex;
@@ -426,8 +438,8 @@ html[data-theme="dark"] .home-hero .home-portrait {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
-  /* clears the half of the trace that hangs below the hero rule */
-  padding: 40px 0 0;
+  /* clears the closing rule below the trace, then a grid gap before the panels */
+  padding: 44px 0 0;
 
   /* the running commentary runs the full width, above the record panels */
   #currently {
@@ -502,7 +514,7 @@ html[data-theme="dark"] .home-hero .home-portrait {
   }
 
   .home-grid {
-    padding-top: 34px;
+    padding-top: 42px;
   }
 }
 
