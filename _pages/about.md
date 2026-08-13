@@ -12,7 +12,8 @@ redirect_from:
     </div>
     <div class="home-hero__main">
       <p class="home-eyebrow">Magnetic resonance · Pulsed EPR · Instrumentation<span class="home-eyebrow__sep"> · </span><br class="home-eyebrow__br">Software</p>
-      <h1 class="home-name">{{ site.title }}</h1>
+      {% assign name_post = site.title | remove_first: site.author.name %}
+      <h1 class="home-name"><span class="home-name__main">{{ site.author.name }}</span><span class="home-name__post">{{ name_post }}</span></h1>
       <p class="home-role">Senior Researcher, EPR laboratory <span class="home-role__sep">/</span> International Tomography Center, Novosibirsk, Russia</p>
       <p class="home-statement">I use pulsed EPR spectroscopy and terahertz radiation to study single-molecule magnets, and write the open-source software that runs the experiments.</p>
       <p class="home-links">
@@ -39,7 +40,7 @@ redirect_from:
   </div>
   <div class="panel__body panel__body--prose">
     <div class="panel-prose">
-      <p>On the bench: the ITC field controller, where the target is 1 ppm stability; commissioning time-resolved EPR at NIOCH; and T<sub>2</sub> measurements on trityl isotopomers. Also the SIFTER background, with <a href="https://orcid.org/0000-0003-3275-0714">M. Yulikov</a> (ETH Zürich) and <a href="https://orcid.org/0000-0002-3076-0196">N. Isaev</a> (ICKC, Novosibirsk).</p>
+      <p>On the bench: the ITC field controller, where the target is 1 ppm stability; commissioning time-resolved EPR at NIOCH; and T<sub>2</sub> measurements on trityl isotopomers. Also the SIFTER background, with <a href="https://orcid.org/0000-0003-3275-0714">M. Yulikov</a> (ETH, Zürich) and <a href="https://orcid.org/0000-0002-3076-0196">N. Isaev</a> (ICKC, Novosibirsk).</p>
       <p>In the editor: a Mellin transform implementation, and <code>auto_epr</code> in <a href="https://github.com/Anatoly1010/Atomize">Atomize</a>.</p>
       <p>In between: trying to relax before the new term, reading with my daughter, and getting properly to grips with SIFTER spectroscopy.</p>
     </div>

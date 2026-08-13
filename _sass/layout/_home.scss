@@ -62,6 +62,11 @@ $signal-period: 10s;
     letter-spacing: -0.02em;
     font-weight: 700;
     color: var(--global-text-color);
+
+    /* the name itself never splits; only the suffix may drop to a second line */
+    .home-name__main {
+      white-space: nowrap;
+    }
   }
 
   .home-role {
@@ -145,7 +150,6 @@ $signal-period: 10s;
 .home-signal {
   display: block;
   width: 100%;
-  height: 52px;
   animation: home-signal-sweep 1.9s cubic-bezier(0.22, 0.61, 0.36, 1) both;
 
   .home-signal__zero {
@@ -188,6 +192,26 @@ $signal-period: 10s;
   .home-signal__echo {
     animation-name: home-signal-echo;
   }
+}
+
+.home-signal--lg {
+  height: 52px;
+}
+
+/* the phone build: same experiment, shorter tau, drawn large enough to read */
+.home-signal--sm {
+  display: none;
+  height: 46px;
+}
+
+.home-signal--sm .home-signal__slip,
+.home-signal--sm .home-signal__echo {
+  transform-origin: 0 23px;
+  animation-name: home-signal-tau-sm;
+}
+
+.home-signal--sm .home-signal__echo {
+  animation-name: home-signal-echo-sm;
 }
 
 /* the trace is acquired left to right on load, like a sweep */
@@ -299,6 +323,87 @@ $signal-period: 10s;
   }
 }
 
+/* the phone build travels less; the decay ladder is the same */
+@keyframes home-signal-tau-sm {
+  0%,
+  5% {
+    transform: translateX(0);
+  }
+
+  15% {
+    transform: translateX(9px);
+  }
+
+  26% {
+    transform: translateX(18px);
+  }
+
+  36% {
+    transform: translateX(27px);
+  }
+
+  46% {
+    transform: translateX(36px);
+  }
+
+  57% {
+    transform: translateX(45px);
+  }
+
+  67% {
+    transform: translateX(54px);
+  }
+
+  78% {
+    transform: translateX(63px);
+  }
+
+  88%,
+  100% {
+    transform: translateX(72px);
+  }
+}
+
+@keyframes home-signal-echo-sm {
+  0%,
+  5% {
+    transform: translateX(0) scaleY(1);
+  }
+
+  15% {
+    transform: translateX(18px) scaleY(0.816);
+  }
+
+  26% {
+    transform: translateX(36px) scaleY(0.665);
+  }
+
+  36% {
+    transform: translateX(54px) scaleY(0.542);
+  }
+
+  46% {
+    transform: translateX(72px) scaleY(0.442);
+  }
+
+  57% {
+    transform: translateX(90px) scaleY(0.361);
+  }
+
+  67% {
+    transform: translateX(108px) scaleY(0.294);
+  }
+
+  78% {
+    transform: translateX(126px) scaleY(0.240);
+  }
+
+  88%,
+  100% {
+    transform: translateX(144px) scaleY(0.196);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .home-signal,
   .home-signal .home-signal__seq,
@@ -345,7 +450,7 @@ html[data-theme="dark"] .home-hero .home-portrait {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .home-hero .home-signal {
+  .home-hero .home-signal--lg {
     height: 40px;
   }
 }
@@ -356,13 +461,13 @@ html[data-theme="dark"] .home-hero .home-portrait {
     display: block;
   }
 
-  /* too cramped to read as a sequence, so the hero keeps its plain bottom padding */
-  .home-hero {
-    padding-bottom: 24px;
+  /* the wide sequence would compress into mush at this width, so the phone build runs */
+  .home-hero .home-signal--lg {
+    display: none;
   }
 
-  .home-hero__signal {
-    display: none;
+  .home-hero .home-signal--sm {
+    display: block;
   }
 
   .home-hero .home-portrait {
@@ -370,6 +475,15 @@ html[data-theme="dark"] .home-hero .home-portrait {
     width: 88px;
     height: 88px;
     margin: 2px 14px 8px 0;
+  }
+
+  /* beside the portrait there is only room for the name, sized to hold one line */
+  .home-hero .home-name {
+    font-size: clamp(19px, 6.4vw, 26px);
+  }
+
+  .home-hero .home-name .home-name__post {
+    display: none;
   }
 
   /* Software takes its own line, so the heading block matches the portrait */
