@@ -2,8 +2,11 @@
    HOME — hero and panel grid
    ========================================================================== */
 
-/* one shot of the hero signal: tau opens, then the trace resets and starts again */
+/* one shot of the hero signal: the delay opens, then the trace resets and starts again */
 $signal-period: 10s;
+
+/* one shot each for the three experiments */
+$signal-cycle: $signal-period * 3;
 
 .home-hero a {
   text-decoration: none;
@@ -154,7 +157,7 @@ $signal-period: 10s;
    Signal trace
    ========================================================================== */
 
-/* a two-pulse echo experiment running along the hero rule */
+/* three experiments running in turn along the hero rule: echo, inversion recovery, nutation */
 
 /* the negative margin pulls the hero's border up to the trace's zero level, so the
    rule that closes the hero is the axis the sequence sits on */
@@ -187,21 +190,54 @@ $signal-period: 10s;
     opacity: 0.55;
   }
 
-  /* the shot fades out at long tau and starts again from the short end */
+  /* each experiment holds the trace for one shot, then hands it to the next */
   .home-signal__seq {
-    animation: home-signal-cycle $signal-period linear infinite;
+    animation: home-signal-cycle $signal-cycle linear infinite;
   }
 
-  /* the refocusing pulse walks out by tau, the echo by 2 tau and fades with T2 */
+  .home-signal__seq--t1 {
+    animation-delay: -($signal-period * 2);
+  }
+
+  .home-signal__seq--rabi {
+    animation-delay: -$signal-period;
+  }
+
+  /* everything that moves pivots on the trace's zero line */
   .home-signal__slip,
-  .home-signal__echo {
+  .home-signal__echo,
+  .home-signal__rec,
+  .home-signal__mz,
+  .home-signal__fid,
+  .home-signal__amp {
     transform-box: view-box;
     transform-origin: 0 26px;
     animation: home-signal-tau $signal-period linear infinite;
   }
 
+  /* the refocusing pulse walks out by tau, the echo by 2 tau and fades with T2 */
   .home-signal__echo {
     animation-name: home-signal-echo;
+  }
+
+  /* the detection block walks out by T, the detection pulse and its fid by the added burst length */
+  .home-signal__rec,
+  .home-signal__fid {
+    animation-name: home-signal-walk;
+  }
+
+  .home-signal__mz {
+    animation-name: home-signal-mz;
+  }
+
+  /* the burst is paid out an eighth of a turn at a time */
+  .home-signal__nut {
+    stroke-dasharray: 1000;
+    animation: home-signal-nutate $signal-period linear infinite;
+  }
+
+  .home-signal__amp {
+    animation-name: home-signal-amp;
   }
 }
 
@@ -216,13 +252,28 @@ $signal-period: 10s;
 }
 
 .home-signal--sm .home-signal__slip,
-.home-signal--sm .home-signal__echo {
+.home-signal--sm .home-signal__echo,
+.home-signal--sm .home-signal__rec,
+.home-signal--sm .home-signal__mz,
+.home-signal--sm .home-signal__fid,
+.home-signal--sm .home-signal__amp {
   transform-origin: 0 23px;
+}
+
+.home-signal--sm .home-signal__slip {
   animation-name: home-signal-tau-sm;
 }
 
 .home-signal--sm .home-signal__echo {
   animation-name: home-signal-echo-sm;
+}
+
+.home-signal--sm .home-signal__rec {
+  animation-name: home-signal-walk-sm;
+}
+
+.home-signal--sm .home-signal__fid {
+  animation-name: home-signal-fid-sm;
 }
 
 /* the trace is acquired left to right on load, like a sweep */
@@ -236,18 +287,18 @@ $signal-period: 10s;
   }
 }
 
-/* the sequence appears, tau opens, and it clears before the reset */
+/* the sequence appears, its delay opens, and it clears before the next experiment */
 @keyframes home-signal-cycle {
   0% {
     opacity: 0;
   }
 
-  5%,
-  88% {
+  1.7%,
+  29.3% {
     opacity: 1;
   }
 
-  96%,
+  32%,
   100% {
     opacity: 0;
   }
@@ -415,12 +466,267 @@ $signal-period: 10s;
   }
 }
 
+/* the recovery delay T, and the same ladder for the length added to the burst */
+@keyframes home-signal-walk {
+  0%,
+  5% {
+    transform: translateX(0);
+  }
+
+  15% {
+    transform: translateX(60px);
+  }
+
+  26% {
+    transform: translateX(120px);
+  }
+
+  36% {
+    transform: translateX(180px);
+  }
+
+  46% {
+    transform: translateX(240px);
+  }
+
+  57% {
+    transform: translateX(300px);
+  }
+
+  67% {
+    transform: translateX(360px);
+  }
+
+  78% {
+    transform: translateX(420px);
+  }
+
+  88%,
+  100% {
+    transform: translateX(480px);
+  }
+}
+
+/* the echo comes back from inverted through the null as 1 - 2 exp(-T / T1) */
+@keyframes home-signal-mz {
+  0%,
+  5% {
+    transform: scaleY(-1);
+  }
+
+  15% {
+    transform: scaleY(-0.422);
+  }
+
+  26% {
+    transform: scaleY(-0.011);
+  }
+
+  36% {
+    transform: scaleY(0.281);
+  }
+
+  46% {
+    transform: scaleY(0.489);
+  }
+
+  57% {
+    transform: scaleY(0.636);
+  }
+
+  67% {
+    transform: scaleY(0.741);
+  }
+
+  78% {
+    transform: scaleY(0.816);
+  }
+
+  88%,
+  100% {
+    transform: scaleY(0.869);
+  }
+}
+
+/* the burst is drawn out an eighth of a turn at a time, from an eighth to nine eighths */
+@keyframes home-signal-nutate {
+  0%,
+  5% {
+    stroke-dashoffset: 888.9;
+  }
+
+  15% {
+    stroke-dashoffset: 777.8;
+  }
+
+  26% {
+    stroke-dashoffset: 666.7;
+  }
+
+  36% {
+    stroke-dashoffset: 555.6;
+  }
+
+  46% {
+    stroke-dashoffset: 444.4;
+  }
+
+  57% {
+    stroke-dashoffset: 333.3;
+  }
+
+  67% {
+    stroke-dashoffset: 222.2;
+  }
+
+  78% {
+    stroke-dashoffset: 111.1;
+  }
+
+  88%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* the detection pulse reads what is left along z, so the fid follows the cosine of the turn */
+@keyframes home-signal-amp {
+  0%,
+  5% {
+    transform: scaleY(0.656);
+  }
+
+  15% {
+    transform: scaleY(0);
+  }
+
+  26% {
+    transform: scaleY(-0.565);
+  }
+
+  36% {
+    transform: scaleY(-0.741);
+  }
+
+  46% {
+    transform: scaleY(-0.486);
+  }
+
+  57% {
+    transform: scaleY(0);
+  }
+
+  67% {
+    transform: scaleY(0.418);
+  }
+
+  78% {
+    transform: scaleY(0.549);
+  }
+
+  88%,
+  100% {
+    transform: scaleY(0.360);
+  }
+}
+
+@keyframes home-signal-walk-sm {
+  0%,
+  5% {
+    transform: translateX(0);
+  }
+
+  15% {
+    transform: translateX(10px);
+  }
+
+  26% {
+    transform: translateX(20px);
+  }
+
+  36% {
+    transform: translateX(30px);
+  }
+
+  46% {
+    transform: translateX(40px);
+  }
+
+  57% {
+    transform: translateX(50px);
+  }
+
+  67% {
+    transform: translateX(60px);
+  }
+
+  78% {
+    transform: translateX(70px);
+  }
+
+  88%,
+  100% {
+    transform: translateX(80px);
+  }
+}
+
+@keyframes home-signal-fid-sm {
+  0%,
+  5% {
+    transform: translateX(0);
+  }
+
+  15% {
+    transform: translateX(20px);
+  }
+
+  26% {
+    transform: translateX(40px);
+  }
+
+  36% {
+    transform: translateX(60px);
+  }
+
+  46% {
+    transform: translateX(80px);
+  }
+
+  57% {
+    transform: translateX(100px);
+  }
+
+  67% {
+    transform: translateX(120px);
+  }
+
+  78% {
+    transform: translateX(140px);
+  }
+
+  88%,
+  100% {
+    transform: translateX(160px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .home-signal,
   .home-signal .home-signal__seq,
   .home-signal .home-signal__slip,
-  .home-signal .home-signal__echo {
+  .home-signal .home-signal__echo,
+  .home-signal .home-signal__rec,
+  .home-signal .home-signal__mz,
+  .home-signal .home-signal__nut,
+  .home-signal .home-signal__fid,
+  .home-signal .home-signal__amp {
     animation: none;
+  }
+
+  /* with nothing running, the first experiment stands for the three */
+  .home-signal .home-signal__seq--t1,
+  .home-signal .home-signal__seq--rabi {
+    display: none;
   }
 }
 
