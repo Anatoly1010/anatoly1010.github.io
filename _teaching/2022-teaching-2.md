@@ -15,7 +15,7 @@ Fundamental annual course on the structure of matter for third-year students.
 
 - [Book of exercises](https://github.com/Anatoly1010/book_of_exercises) 
 - [Lecture videos](https://t.me/costruzione_quantistica/307) 
-- [Lecture notes, Term 1](https://disk.yandex.ru/d/OYf5kqYudebEZw)
+- [Lecture notes, Term 1](/files/lectures-term1.pdf)
 - [Lecture notes, Term 2](https://disk.yandex.ru/d/2u89KeBra28ilA)
 - [Literature](https://disk.yandex.ru/d/VMvGKc-aCud5Wg)
 - [Review of students, from 2023](https://docs.google.com/document/d/1wXu2XSPQacO4mwf1W60LI7NNsTmowSN7bSVDIwxYq0Q/edit?tab=t.0)
