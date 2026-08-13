@@ -25,7 +25,9 @@ $signal-period: 10s;
   margin-right: calc(50% - 50vw);
   padding: 34px 0 0;
   border-bottom: 1px solid var(--global-border-color);
-  background: linear-gradient(var(--global-grid-line-color) 1px, transparent 1px) 0 0 / 100% 28px;
+  /* ruled from the bottom up, so the closing rule falls on the beat and the odd
+     remainder ends up at the top edge instead of beside the trace */
+  background: linear-gradient(var(--global-grid-line-color) 1px, transparent 1px) 0 100% / 100% 28px;
 
   .home-hero__inner {
     display: flex;
