@@ -208,6 +208,7 @@ $signal-cycle: $signal-period * 3;
   .home-signal__echo,
   .home-signal__rec,
   .home-signal__mz,
+  .home-signal__nut,
   .home-signal__fid,
   .home-signal__amp {
     transform-box: view-box;
@@ -220,21 +221,15 @@ $signal-cycle: $signal-period * 3;
     animation-name: home-signal-echo;
   }
 
-  /* the detection block walks out by T, the detection pulse and its fid by the added burst length */
+  /* the recovery block walks by T, and the burst's end, its detection pulse and its fid all by the added length */
   .home-signal__rec,
+  .home-signal__nut,
   .home-signal__fid {
     animation-name: home-signal-walk;
   }
 
   .home-signal__mz {
     animation-name: home-signal-mz;
-  }
-
-  /* the burst is paid out by dashes in plain user units, measured alike on every browser */
-  .home-signal__nut {
-    vector-effect: none;
-    stroke-dasharray: 2208;
-    animation: home-signal-nutate $signal-period linear infinite;
   }
 
   .home-signal__amp {
@@ -273,13 +268,9 @@ $signal-cycle: $signal-period * 3;
   animation-name: home-signal-walk-sm;
 }
 
+.home-signal--sm .home-signal__nut,
 .home-signal--sm .home-signal__fid {
   animation-name: home-signal-fid-sm;
-}
-
-.home-signal--sm .home-signal__nut {
-  stroke-dasharray: 638;
-  animation-name: home-signal-nutate-sm;
 }
 
 /* the trace is acquired left to right on load, like a sweep */
@@ -551,87 +542,6 @@ $signal-cycle: $signal-period * 3;
   88%,
   100% {
     transform: scaleY(0.869);
-  }
-}
-
-/* the burst is paid out an eighth of a turn at a time, from an eighth to nine eighths */
-@keyframes home-signal-nutate {
-  0%,
-  5% {
-    stroke-dashoffset: 1962;
-  }
-
-  15% {
-    stroke-dashoffset: 1717;
-  }
-
-  26% {
-    stroke-dashoffset: 1472;
-  }
-
-  36% {
-    stroke-dashoffset: 1226;
-  }
-
-  46% {
-    stroke-dashoffset: 981;
-  }
-
-  57% {
-    stroke-dashoffset: 736;
-  }
-
-  67% {
-    stroke-dashoffset: 491;
-  }
-
-  78% {
-    stroke-dashoffset: 245;
-  }
-
-  88%,
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes home-signal-nutate-sm {
-  0%,
-  5% {
-    stroke-dashoffset: 567;
-  }
-
-  15% {
-    stroke-dashoffset: 496;
-  }
-
-  26% {
-    stroke-dashoffset: 425;
-  }
-
-  36% {
-    stroke-dashoffset: 354;
-  }
-
-  46% {
-    stroke-dashoffset: 283;
-  }
-
-  57% {
-    stroke-dashoffset: 213;
-  }
-
-  67% {
-    stroke-dashoffset: 142;
-  }
-
-  78% {
-    stroke-dashoffset: 71;
-  }
-
-  88%,
-  100% {
-    stroke-dashoffset: 0;
   }
 }
 
