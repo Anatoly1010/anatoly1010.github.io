@@ -3,6 +3,8 @@ layout: archive
 title: "Publications"
 permalink: /publications/
 lead: "Peer-reviewed papers and conference contributions, grouped by year."
+readout_series: publications
+readout_label: "publications per year"
 ---
 
 {% include base_path %}
@@ -18,6 +20,7 @@ lead: "Peer-reviewed papers and conference contributions, grouped by year."
 
   <section class="panel">
     <div class="panel__head">
+      <i class="panel__glyph fa-solid fa-chart-line" aria-hidden="true"></i>
       <h2 class="panel__title">At a glance</h2>
       {% if site.author.googlescholar %}<a class="panel__see-all" href="{{ site.author.googlescholar }}">Google Scholar →</a>{% endif %}
     </div>
@@ -35,6 +38,7 @@ lead: "Peer-reviewed papers and conference contributions, grouped by year."
   {% if preprints.size > 0 %}
     <section class="panel">
       <div class="panel__head">
+        <i class="panel__glyph fa-solid fa-scroll" aria-hidden="true"></i>
         <h2 class="panel__title">Preprints</h2>
         <span class="panel__count">{{ preprints.size }} item{% if preprints.size != 1 %}s{% endif %}</span>
       </div>
@@ -69,6 +73,7 @@ lead: "Peer-reviewed papers and conference contributions, grouped by year."
   {% if patents.size > 0 %}
     <section class="panel">
       <div class="panel__head">
+        <i class="panel__glyph fa-solid fa-signature" aria-hidden="true"></i>
         <h2 class="panel__title">Patents</h2>
         <span class="panel__count">{{ patents.size }} item{% if patents.size != 1 %}s{% endif %}</span>
       </div>

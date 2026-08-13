@@ -2,6 +2,9 @@
    HOME — hero and panel grid
    ========================================================================== */
 
+/* one shot of the hero signal: tau opens, then the trace resets and starts again */
+$signal-period: 10s;
+
 .home-hero a {
   text-decoration: none;
 
@@ -20,7 +23,7 @@
   margin-top: -2em;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  padding: 34px 0 26px;
+  padding: 34px 0 0;
   border-bottom: 1px solid var(--global-border-color);
   background: linear-gradient(var(--global-grid-line-color) 1px, transparent 1px) 0 0 / 100% 28px;
 
@@ -128,6 +131,183 @@
   }
 }
 
+/*
+   Signal trace
+   ========================================================================== */
+
+/* a two-pulse echo experiment running along the hero rule */
+.home-hero__signal {
+  max-width: $site-max-width;
+  margin: 16px auto 4px;
+  padding: 0 20px;
+}
+
+.home-signal {
+  display: block;
+  width: 100%;
+  height: 52px;
+  animation: home-signal-sweep 1.9s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+
+  .home-signal__zero {
+    stroke: var(--global-border-color);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .home-signal__pulse,
+  .home-signal__signal {
+    fill: none;
+    stroke: var(--global-link-color);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .home-signal__pulse {
+    opacity: 0.7;
+  }
+
+  .home-signal__signal {
+    opacity: 0.55;
+  }
+
+  /* the shot fades out at long tau and starts again from the short end */
+  .home-signal__seq {
+    animation: home-signal-cycle $signal-period linear infinite;
+  }
+
+  /* the refocusing pulse walks out by tau, the echo by 2 tau and fades with T2 */
+  .home-signal__slip,
+  .home-signal__echo {
+    transform-box: view-box;
+    transform-origin: 0 26px;
+    animation: home-signal-tau $signal-period linear infinite;
+  }
+
+  .home-signal__echo {
+    animation-name: home-signal-echo;
+  }
+}
+
+/* the trace is acquired left to right on load, like a sweep */
+@keyframes home-signal-sweep {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* the sequence appears, tau opens, and it clears before the reset */
+@keyframes home-signal-cycle {
+  0% {
+    opacity: 0;
+  }
+
+  5%,
+  88% {
+    opacity: 1;
+  }
+
+  96%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes home-signal-tau {
+  0%,
+  5% {
+    transform: translateX(0);
+  }
+
+  15% {
+    transform: translateX(38.8px);
+  }
+
+  26% {
+    transform: translateX(77.5px);
+  }
+
+  36% {
+    transform: translateX(116.2px);
+  }
+
+  46% {
+    transform: translateX(155px);
+  }
+
+  57% {
+    transform: translateX(193.8px);
+  }
+
+  67% {
+    transform: translateX(232.5px);
+  }
+
+  78% {
+    transform: translateX(271.2px);
+  }
+
+  88%,
+  100% {
+    transform: translateX(310px);
+  }
+}
+
+/* the echo travels at 2 tau and its height follows exp(-2 tau / T2) */
+@keyframes home-signal-echo {
+  0%,
+  5% {
+    transform: translateX(0) scaleY(1);
+  }
+
+  15% {
+    transform: translateX(77.5px) scaleY(0.816);
+  }
+
+  26% {
+    transform: translateX(155px) scaleY(0.665);
+  }
+
+  36% {
+    transform: translateX(232.5px) scaleY(0.542);
+  }
+
+  46% {
+    transform: translateX(310px) scaleY(0.442);
+  }
+
+  57% {
+    transform: translateX(387.5px) scaleY(0.361);
+  }
+
+  67% {
+    transform: translateX(465px) scaleY(0.294);
+  }
+
+  78% {
+    transform: translateX(542.5px) scaleY(0.240);
+  }
+
+  88%,
+  100% {
+    transform: translateX(620px) scaleY(0.196);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-signal,
+  .home-signal .home-signal__seq,
+  .home-signal .home-signal__slip,
+  .home-signal .home-signal__echo {
+    animation: none;
+  }
+}
+
 /* the portrait keeps its white card in both themes, like a print on the page */
 html[data-theme="dark"] .home-hero .home-portrait {
   background: #fff;
@@ -143,6 +323,11 @@ html[data-theme="dark"] .home-hero .home-portrait {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   padding: 28px 0 0;
+
+  /* the running commentary runs the full width, above the record panels */
+  #currently {
+    grid-column: 1 / -1;
+  }
 }
 
 /*
@@ -159,12 +344,25 @@ html[data-theme="dark"] .home-hero .home-portrait {
   .home-grid {
     grid-template-columns: minmax(0, 1fr);
   }
+
+  .home-hero .home-signal {
+    height: 40px;
+  }
 }
 
 @media (max-width: 640px) {
   /* the heading wraps around the portrait, the rest of the hero runs full width below it */
   .home-hero .home-hero__inner {
     display: block;
+  }
+
+  /* too cramped to read as a sequence, so the hero keeps its plain bottom padding */
+  .home-hero {
+    padding-bottom: 24px;
+  }
+
+  .home-hero__signal {
+    display: none;
   }
 
   .home-hero .home-portrait {

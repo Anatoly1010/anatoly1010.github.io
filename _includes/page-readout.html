@@ -1,0 +1,32 @@
+{% comment %}top-right readout for an archive page: one bar per year of the collection named in page.readout_series{% endcomment %}
+{% assign series = site[page.readout_series] %}
+{% if series and series.size > 0 %}
+  {% assign groups = series | group_by_exp: "item", "item.date | date: '%Y'" | sort: "name" %}
+  {% assign first = groups.first.name | plus: 0 %}
+  {% assign last = groups.last.name | plus: 0 %}
+  {% assign max = 1 %}
+  {% for g in groups %}{% if g.items.size > max %}{% assign max = g.items.size %}{% endif %}{% endfor %}
+  {% assign span = last | minus: first | plus: 1 %}
+  {% if span > 5 %}
+    {% assign width = span | times: 10 | minus: 3 %}
+    <div class="page-readout">
+      <svg class="page-readout__spark" viewBox="0 0 {{ width }} 30" width="{{ width }}" height="30" aria-hidden="true" focusable="false">
+        <g class="page-readout__bars">
+          {% for year in (first..last) %}
+            {% assign key = year | append: '' %}
+            {% assign group = groups | where: "name", key | first %}
+            {% assign count = 0 %}
+            {% if group %}{% assign count = group.items.size %}{% endif %}
+            {% if count > 0 %}
+              {% assign height = count | times: 24 | divided_by: max %}
+              {% if height < 2 %}{% assign height = 2 %}{% endif %}
+              <rect x="{{ forloop.index0 | times: 10 }}" y="{{ 26 | minus: height }}" width="7" height="{{ height }}" rx="1"/>
+            {% endif %}
+          {% endfor %}
+        </g>
+        <line class="page-readout__base" x1="0" y1="26.5" x2="{{ width }}" y2="26.5"/>
+      </svg>
+      <p class="page-readout__caption">{{ page.readout_label }} <span class="page-readout__dot">·</span> {{ first }}–{{ last }}</p>
+    </div>
+  {% endif %}
+{% endif %}

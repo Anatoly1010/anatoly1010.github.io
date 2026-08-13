@@ -18,8 +18,11 @@ layout: default
   <div class="archive">
     {% unless page.header.overlay_color or page.header.overlay_image %}
       <header class="page-header">
-        <h1 class="page__title">{{ page.title }}</h1>
-        {% if page.lead %}<p class="page__lead">{{ page.lead }}</p>{% endif %}
+        <div class="page-header__main">
+          <h1 class="page__title">{{ page.title }}</h1>
+          {% if page.lead %}<p class="page__lead">{{ page.lead }}</p>{% endif %}
+        </div>
+        {% if page.readout_series %}{% include page-readout.html %}{% elsif page.motif %}{% include page-motif.html %}{% endif %}
       </header>
     {% endunless %}
     {{ content }}

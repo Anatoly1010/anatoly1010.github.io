@@ -3,6 +3,8 @@ layout: archive
 title: "Talks and Presentations"
 permalink: /talks/
 lead: "Conference talks, invited lectures and seminars."
+readout_series: talks
+readout_label: "talks per year"
 ---
 
 {% include base_path %}
@@ -14,6 +16,7 @@ lead: "Conference talks, invited lectures and seminars."
 
   <section class="panel">
     <div class="panel__head">
+      <i class="panel__glyph fa-solid fa-location-dot" aria-hidden="true"></i>
       <h2 class="panel__title">Where I have spoken</h2>
       <span class="panel__count">{{ mapped_talks.size }} location{% if mapped_talks.size != 1 %}s{% endif %}</span>
     </div>

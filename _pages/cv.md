@@ -3,6 +3,8 @@ layout: archive
 title: "Curriculum Vitae"
 permalink: /cv/
 lead: "Education, positions, skills and a full record of publications, talks and teaching."
+motif: wurst
+motif_label: "wurst pulse"
 redirect_from:
   - /resume
 ---
@@ -17,6 +19,7 @@ redirect_from:
 
 <section class="panel">
   <div class="panel__head">
+    <i class="panel__glyph fa-solid fa-graduation-cap" aria-hidden="true"></i>
     <h2 class="panel__title">Education</h2>
   </div>
   <div class="panel__body">
@@ -50,6 +53,7 @@ redirect_from:
 
 <section class="panel">
   <div class="panel__head">
+    <i class="panel__glyph fa-solid fa-briefcase" aria-hidden="true"></i>
     <h2 class="panel__title">Experience</h2>
   </div>
   <div class="panel__body">
@@ -95,6 +99,7 @@ redirect_from:
 
 <section class="panel">
   <div class="panel__head">
+    <i class="panel__glyph fa-solid fa-award" aria-hidden="true"></i>
     <h2 class="panel__title">Awards</h2>
   </div>
   <div class="panel__body">
@@ -141,6 +146,7 @@ redirect_from:
 
 <section class="panel">
   <div class="panel__head">
+    <i class="panel__glyph fa-solid fa-sack-dollar" aria-hidden="true"></i>
     <h2 class="panel__title">Grants</h2>
     <a class="panel__see-all" href="{{ base_path }}/portfolio/">All projects →</a>
   </div>
@@ -156,6 +162,7 @@ redirect_from:
 
 <section class="panel">
   <div class="panel__head">
+    <i class="panel__glyph fa-solid fa-clipboard-check" aria-hidden="true"></i>
     <h2 class="panel__title">Peer review</h2>
     <span class="panel__count">7 manuscripts</span>
   </div>
@@ -216,6 +223,7 @@ redirect_from:
 
 <section class="panel">
   <div class="panel__head">
+    <i class="panel__glyph fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
     <h2 class="panel__title">Skills</h2>
   </div>
   <div class="panel__body">
@@ -242,6 +250,7 @@ redirect_from:
 
 <section class="panel">
   <div class="panel__head">
+    <i class="panel__glyph fa-solid fa-file-lines" aria-hidden="true"></i>
     <h2 class="panel__title">Publications</h2>
     <a class="panel__see-all" href="{{ base_path }}/publications/">All publications →</a>
   </div>
@@ -256,6 +265,7 @@ redirect_from:
 
 <section class="panel">
   <div class="panel__head">
+    <i class="panel__glyph fa-solid fa-comments" aria-hidden="true"></i>
     <h2 class="panel__title">Talks</h2>
     <a class="panel__see-all" href="{{ base_path }}/talks/">All talks →</a>
   </div>
@@ -270,6 +280,7 @@ redirect_from:
 
 <section class="panel">
   <div class="panel__head">
+    <i class="panel__glyph fa-solid fa-chalkboard-user" aria-hidden="true"></i>
     <h2 class="panel__title">Teaching</h2>
     <a class="panel__see-all" href="{{ base_path }}/teaching/">All teaching →</a>
   </div>

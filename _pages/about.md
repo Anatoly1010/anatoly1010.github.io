@@ -26,12 +26,29 @@ redirect_from:
       </p>
     </div>
   </div>
+  <div class="home-hero__signal">{% include home-signal.html %}</div>
 </section>
 
 <div class="home-grid">
 
+<section class="panel" id="currently">
+  <div class="panel__head">
+    <i class="panel__glyph fa-solid fa-flask" aria-hidden="true"></i>
+    <h2 class="panel__title">Currently</h2>
+    <span class="panel__count">updated 2026-08</span>
+  </div>
+  <div class="panel__body panel__body--prose">
+    <div class="panel-prose">
+      <p>On the bench: the ITC field controller, where the target is 1 ppm stability; commissioning time-resolved EPR at NIOCH; and T<sub>2</sub> measurements on trityl isotopomers. Also the SIFTER background, with <a href="https://orcid.org/0000-0003-3275-0714">M. Yulikov</a> (ETH Zürich) and <a href="https://orcid.org/0000-0002-3076-0196">N. Isaev</a> (ICKC, Novosibirsk).</p>
+      <p>In the editor: a Mellin transform implementation, and <code>auto_epr</code> in <a href="https://github.com/Anatoly1010/Atomize">Atomize</a>.</p>
+      <p>In between: trying to relax before the new term, reading with my daughter, and getting properly to grips with SIFTER spectroscopy.</p>
+    </div>
+  </div>
+</section>
+
 <section class="panel" id="news">
   <div class="panel__head">
+    <i class="panel__glyph fa-solid fa-tower-broadcast" aria-hidden="true"></i>
     <h2 class="panel__title">Recent news</h2>
     <a class="panel__see-all" href="{{ '/news/' | relative_url }}">See all →</a>
   </div>
@@ -53,6 +70,7 @@ redirect_from:
 
 <section class="panel" id="publications">
   <div class="panel__head">
+    <i class="panel__glyph fa-solid fa-file-lines" aria-hidden="true"></i>
     <h2 class="panel__title">Selected publications</h2>
     <a class="panel__see-all" href="{{ '/publications/' | relative_url }}">See all →</a>
   </div>
@@ -79,6 +97,7 @@ redirect_from:
 
 <section class="panel" id="teaching">
   <div class="panel__head">
+    <i class="panel__glyph fa-solid fa-chalkboard-user" aria-hidden="true"></i>
     <h2 class="panel__title">Teaching</h2>
     <a class="panel__see-all" href="{{ '/teaching/' | relative_url }}">See all →</a>
   </div>
@@ -98,6 +117,7 @@ redirect_from:
 
 <section class="panel" id="interests">
   <div class="panel__head">
+    <i class="panel__glyph fa-solid fa-atom" aria-hidden="true"></i>
     <h2 class="panel__title">Research interests</h2>
   </div>
   <div class="panel__body">

@@ -61,6 +61,7 @@ layout: default
           {% if page.collection == 'publications' %}
             <section class="panel">
               <div class="panel__head">
+                <i class="panel__glyph fa-solid fa-file-lines" aria-hidden="true"></i>
                 <h2 class="panel__title">Record</h2>
               </div>
               <div class="panel__body">
@@ -92,6 +93,7 @@ layout: default
           {% elsif page.collection == 'teaching' %}
             <section class="panel">
               <div class="panel__head">
+                <i class="panel__glyph fa-solid fa-chalkboard-user" aria-hidden="true"></i>
                 <h2 class="panel__title">Course</h2>
               </div>
               <div class="panel__body">
@@ -118,6 +120,7 @@ layout: default
           {% elsif page.collection == 'portfolio' %}
             <section class="panel">
               <div class="panel__head">
+                <i class="panel__glyph fa-solid fa-folder-open" aria-hidden="true"></i>
                 <h2 class="panel__title">Project</h2>
               </div>
               <div class="panel__body">
@@ -152,6 +155,7 @@ layout: default
           {% if page.toc_figure %}
             <section class="panel">
               <div class="panel__head">
+                <i class="panel__glyph fa-solid fa-image" aria-hidden="true"></i>
                 <h2 class="panel__title">Graphical abstract</h2>
               </div>
               <div class="panel__body">
@@ -179,6 +183,7 @@ layout: default
           {% elsif page.excerpt and page.collection == 'publications' %}
             <section class="panel">
               <div class="panel__head">
+                <i class="panel__glyph fa-solid fa-quote-left" aria-hidden="true"></i>
                 <h2 class="panel__title">Summary</h2>
               </div>
               <div class="panel__body panel__body--prose">
@@ -193,6 +198,7 @@ layout: default
           {% if has_taxonomy %}
             <section class="panel">
               <div class="panel__head">
+                <i class="panel__glyph fa-solid fa-tags" aria-hidden="true"></i>
                 <h2 class="panel__title">Filed under</h2>
               </div>
               <div class="panel__body">

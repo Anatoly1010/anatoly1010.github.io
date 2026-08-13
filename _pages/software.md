@@ -3,6 +3,8 @@ layout: archive
 title: "Software"
 permalink: /software/
 lead: "Open-source software I develop and maintain."
+motif: instrument
+motif_label: "instrument control"
 ---
 
 {% include base_path %}
@@ -40,6 +42,7 @@ lead: "Open-source software I develop and maintain."
 
 <section class="panel">
   <div class="panel__head">
+    <i class="panel__glyph fa-solid fa-microchip" aria-hidden="true"></i>
     <h2 class="panel__title">SpinCorePCI_no_sudo</h2>
     <a class="panel__see-all" href="https://github.com/Anatoly1010/SpinCorePCI_no_sudo">GitHub →</a>
   </div>
