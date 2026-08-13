@@ -141,9 +141,12 @@ $signal-period: 10s;
    ========================================================================== */
 
 /* a two-pulse echo experiment running along the hero rule */
+
+/* the negative margin pulls the hero's border up to the trace's zero level, so the
+   rule that closes the hero is the axis the sequence sits on */
 .home-hero__signal {
   max-width: $site-max-width;
-  margin: 16px auto 4px;
+  margin: 16px auto -26px;
   padding: 0 20px;
 }
 
@@ -151,12 +154,6 @@ $signal-period: 10s;
   display: block;
   width: 100%;
   animation: home-signal-sweep 1.9s cubic-bezier(0.22, 0.61, 0.36, 1) both;
-
-  .home-signal__zero {
-    stroke: var(--global-border-color);
-    stroke-width: 1;
-    vector-effect: non-scaling-stroke;
-  }
 
   .home-signal__pulse,
   .home-signal__signal {
@@ -427,7 +424,8 @@ html[data-theme="dark"] .home-hero .home-portrait {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
-  padding: 28px 0 0;
+  /* clears the half of the trace that hangs below the hero rule */
+  padding: 40px 0 0;
 
   /* the running commentary runs the full width, above the record panels */
   #currently {
@@ -450,9 +448,6 @@ html[data-theme="dark"] .home-hero .home-portrait {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .home-hero .home-signal--lg {
-    height: 40px;
-  }
 }
 
 @media (max-width: 640px) {
@@ -468,6 +463,11 @@ html[data-theme="dark"] .home-hero .home-portrait {
 
   .home-hero .home-signal--sm {
     display: block;
+  }
+
+  /* the phone build is shorter, so the rule sits higher up the box */
+  .home-hero__signal {
+    margin-bottom: -23px;
   }
 
   .home-hero .home-portrait {
@@ -500,7 +500,7 @@ html[data-theme="dark"] .home-hero .home-portrait {
   }
 
   .home-grid {
-    padding-top: 22px;
+    padding-top: 34px;
   }
 }
 
