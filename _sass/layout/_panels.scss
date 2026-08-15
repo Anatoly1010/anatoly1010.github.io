@@ -695,6 +695,55 @@
   }
 }
 
+.panel-reactions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  .reaction {
+    gap: 9px;
+    padding: 7px 11px;
+  }
+
+  .reaction__count {
+    min-width: 14px;
+    text-align: right;
+    color: var(--global-text-color-3);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* the three traces: a CW line, a chirp, an empty channel */
+  .reaction__trace {
+    display: block;
+    width: 34px;
+    height: 14px;
+    fill: none;
+    stroke: var(--global-link-color);
+    stroke-width: 1.3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.75;
+  }
+
+  .reaction:hover .reaction__trace {
+    opacity: 1;
+  }
+
+  .reaction.is-on {
+    background: var(--global-accent-soft-color);
+    border-color: var(--global-link-color);
+
+    .reaction__trace {
+      opacity: 1;
+      stroke-width: 1.6;
+    }
+
+    .reaction__count {
+      color: var(--global-link-color);
+    }
+  }
+}
+
 @media (max-width: 420px) {
   .panel__body .panel-news li,
   .panel__body .panel-specs li {

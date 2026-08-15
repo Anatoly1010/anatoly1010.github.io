@@ -1,0 +1,31 @@
+{% if site.reactions.endpoint %}
+  <section class="panel js-reactions" data-endpoint="{{ site.reactions.endpoint }}" data-slug="{{ page.url }}">
+    <div class="panel__head">
+      <i class="panel__glyph fa-solid fa-wave-square" aria-hidden="true"></i>
+      <h2 class="panel__title">Reactions</h2>
+    </div>
+    <div class="panel__body">
+      <div class="panel-reactions">
+        <button type="button" class="panel-btn reaction" data-key="cw" title="CW" aria-label="CW">
+          <svg class="reaction__trace" viewBox="0 0 28 12" aria-hidden="true" focusable="false">
+            <path d="M1 6 C4.5 6 6 5.8 7.5 3 C9 0.5 10.5 0.8 12 3 C13.2 4.8 14 6 14 6 C14 6 14.8 7.2 16 9 C17.5 11.2 19 11.5 20.5 9 C22 6.2 23.5 6 27 6"/>
+          </svg>
+          <span class="reaction__count" data-count="cw">–</span>
+        </button>
+        <button type="button" class="panel-btn reaction" data-key="chirp" title="Chirp" aria-label="Chirp">
+          <svg class="reaction__trace" viewBox="0 0 28 12" aria-hidden="true" focusable="false">
+            <path d="M1.00 6.00 L2.19 5.99 L3.15 5.96 L3.86 5.92 L4.58 5.85 L5.29 5.75 L6.01 5.65 L6.72 5.56 L7.44 5.52 L8.16 5.57 L8.63 5.67 L9.11 5.84 L9.59 6.08 L10.06 6.36 L10.54 6.66 L11.02 6.95 L11.50 7.15 L11.97 7.23 L12.45 7.13 L12.93 6.82 L13.40 6.32 L13.88 5.66 L14.36 4.97 L14.83 4.39 L15.31 4.08 L15.79 4.16 L16.27 4.71 L16.74 5.66 L17.22 6.83 L17.70 7.91 L18.17 8.55 L18.65 8.47 L19.13 7.59 L19.61 6.07 L20.08 4.35 L20.56 3.07 L21.04 2.79 L21.51 3.76 L21.99 5.76 L22.47 8.06 L22.94 9.64 L23.42 9.66 L23.90 7.91 L24.38 5.05 L24.85 2.44 L25.33 1.54 L25.81 3.05 L26.28 6.38 L26.76 9.74 L27.00 10.76"/>
+          </svg>
+          <span class="reaction__count" data-count="chirp">–</span>
+        </button>
+        <button type="button" class="panel-btn reaction" data-key="nosignal" title="No signal" aria-label="No signal">
+          <svg class="reaction__trace" viewBox="0 0 28 12" aria-hidden="true" focusable="false">
+            <path d="M1.00 5.76 L2.00 6.49 L3.00 5.79 L4.00 5.70 L5.00 5.12 L6.00 5.80 L7.00 7.06 L8.00 6.40 L9.00 6.99 L10.00 6.24 L11.00 6.38 L12.00 6.18 L13.00 4.42 L14.00 6.81 L15.00 6.48 L16.00 6.47 L17.00 4.39 L18.00 4.34 L19.00 5.15 L20.00 5.56 L21.00 6.29 L22.00 5.96 L23.00 6.49 L24.00 5.39 L25.00 6.29 L26.00 6.37 L27.00 5.37"/>
+          </svg>
+          <span class="reaction__count" data-count="nosignal">–</span>
+        </button>
+      </div>
+    </div>
+  </section>
+  <script src="{{ '/assets/js/reactions.js' | relative_url }}" defer></script>
+{% endif %}

@@ -1,0 +1,7 @@
+name = "reactions"
+main = "reactions.js"
+compatibility_date = "2025-01-01"
+
+[[kv_namespaces]]
+binding = "REACTIONS"
+id = "PUT_KV_NAMESPACE_ID_HERE"
