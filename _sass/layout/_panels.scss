@@ -695,6 +695,15 @@
   }
 }
 
+/* no counts, no panel: it appears only once the worker has answered */
+.js-reactions {
+  display: none;
+
+  &.is-ready {
+    display: block;
+  }
+}
+
 .panel-reactions {
   display: flex;
   flex-wrap: wrap;
