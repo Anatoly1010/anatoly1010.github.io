@@ -73,7 +73,7 @@ layout: default
                     <li><span class="panel-specs__key">Date</span><span class="panel-specs__value"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></span></li>
                   {% endif %}
                   {% if page.citation %}
-                    <li><span class="panel-specs__key">Citation</span><span class="panel-specs__value">{{ page.citation }}</span></li>
+                    <li><span class="panel-specs__key">Citation</span><span class="panel-specs__value">{{ page.citation }}{% if page.paperurl contains 'doi.org' %} <a href="{{ page.paperurl }}">{{ page.paperurl }}</a>{% endif %}</span></li>
                   {% endif %}
                   {% if page.note %}
                     <li><span class="panel-specs__key">Note</span><span class="panel-specs__value">{{ page.note }}</span></li>
