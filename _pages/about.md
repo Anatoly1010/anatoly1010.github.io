@@ -36,13 +36,13 @@ redirect_from:
   <div class="panel__head">
     <i class="panel__glyph fa-solid fa-flask" aria-hidden="true"></i>
     <h2 class="panel__title">Currently</h2>
-    <span class="panel__count">updated 2026-08</span>
+    <span class="panel__count">updated 2026-09</span>
   </div>
   <div class="panel__body panel__body--prose">
     <div class="panel-prose">
       <p>On the bench: the ITC field controller, where the target is 1 ppm stability; commissioning time-resolved EPR at NIOCH; and T<sub>2</sub> measurements on trityl isotopomers. Also the SIFTER background, with <a href="https://orcid.org/0000-0003-3275-0714">M. Yulikov</a> (ETH, Zürich) and <a href="https://orcid.org/0000-0002-3076-0196">N. Isaev</a> (ICKC, Novosibirsk).</p>
       <p>In the editor: a Mellin transform implementation, and <code>auto_epr</code> in <a href="https://github.com/Anatoly1010/Atomize">Atomize</a>.</p>
-      <p>In between: trying to relax before the new term, reading with my daughter, and getting properly to grips with SIFTER spectroscopy.</p>
+      <p>In between: the new term at NSU, Structure of Matter again, reading with my daughter, and getting properly to grips with SIFTER spectroscopy.</p>
     </div>
   </div>
 </section>
