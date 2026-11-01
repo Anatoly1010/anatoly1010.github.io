@@ -1,0 +1,11 @@
+- name: "Anatoly Melnikov, Ph.D."
+  role: "Head of the Laboratory"
+  url: /team/melnikov/
+  head: true
+  photo: /images/bio-halftone.png
+  bio: "Pulsed EPR spectroscopy and terahertz radiation applied to single-molecule magnets, and the instruments and open-source software that run the experiments. Also Associate Professor at Novosibirsk State University."
+
+- name: "Your name here"
+  role: "PhD student or postdoc — see open positions"
+  url: "#positions"
+  placeholder: true

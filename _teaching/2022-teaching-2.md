@@ -24,6 +24,11 @@ Fundamental annual course on the structure of matter for third-year students.
 
 <table>
   <tr>
+    <td>2026-2027</td>
+    <td><a href="https://docs.google.com/spreadsheets/d/1qnspvsaGS6ukKNl4JXo_5mGBpgzaR8PJkg8_0cfyG18/edit?gid=1545172477#gid=1545172477">Term 1</a></td>
+    <td>&mdash;</td>
+  </tr>
+  <tr>
     <td>2025-2026</td>
     <td><a href="https://docs.google.com/spreadsheets/d/1Or_V82EJOcthJ9dQafP4yGVM23i_pEVCYhQcekx7eX0/edit?gid=1020499552#gid=1020499552">Term 1</a></td>
     <td><a href="https://docs.google.com/spreadsheets/d/1cyMtOjDkwD9M9GjxnaEH5Uk6UxR6-5t3QkWp9rJRcrU/edit?gid=662683237#gid=662683237">Term 2</a></td>

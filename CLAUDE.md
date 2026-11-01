@@ -16,7 +16,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A personal webpage. Jekyll, built on Academic Pages (Minimal Mistakes lineage), deployed by GitHub Pages from `master`.
+The page of the Laboratory of Instrumentation and Experimental Methods (ITC, Novosibirsk); the head's personal material lives on a profile page under Team. Jekyll, built on Academic Pages (Minimal Mistakes lineage), deployed by GitHub Pages from `master`.
 
 ## Local preview
 
@@ -38,7 +38,7 @@ bundle exec jekyll build --destination /tmp/jekyll-check
 
 ## The design
 
-An "instrument panel" look: content sits in bordered panels with a mono uppercase header, on a graphite/near-white surface, with a single amber accent. No sidebar; identity lives in the top nav and the home hero.
+An "instrument panel" look: content sits in bordered panels with a mono uppercase header, on a graphite/near-white surface, with a single amber accent. No sidebar; the lab's identity lives in the top nav and the home hero, the head's on the profile page (`_pages/melnikov.md`).
 
 - Colours are CSS custom properties (`--global-*`) defined twice: `_sass/theme/_air_light.scss` on `:root` and `_sass/theme/_air_dark.scss` under `html[data-theme="dark"]`. Every new colour must be defined in both. Never hardcode a hex value in a component.
 - Dark mode is the theme's own toggle (`#theme-toggle` in `_includes/masthead.html`, handled in `assets/js/_main.js`). Do not add a second theming mechanism.
@@ -64,6 +64,7 @@ Two theme rules underline every link inside `.page__content` and `.archive`. Pan
 - **Publication** — a file in `_publications/`. `category: manuscripts` lands it in the year panels; `category: preprints` puts it in the Preprints panel on the Publications page instead, `category: patents` in the Patents panel. The Publications page splits `citation` on the quoted title to show authors and venue separately, so keep the existing citation format.
 - **Talk** — a file in `_talks/`. Adding `lat`/`lng` puts a dot on the map.
 - **Teaching** — a file in `_teaching/`. `###` sections in the body each become their own panel automatically.
+- **Team member** — an entry in `_data/team.yml` (`name`, `role`, optional `url`; `placeholder: true` renders it muted) shows on the Team page.
 - **Post** — a file in `_posts/`. `categories: [news]` also surfaces it on the home page. The four newest posts appear as cards on the Blog page.
 - **Graphical abstract** — optional on any post: `toc_figure: /images/toc/name.jpg`, plus `toc_figure_alt` and `toc_figure_caption`. Shows as a panel on the post and a thumbnail on its card.
 - **Citations and h-index** — `author.citations` and `author.h_index` in `_config.yml`, shown on the Publications page. Update them by hand from Google Scholar.

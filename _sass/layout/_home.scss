@@ -796,7 +796,8 @@ html[data-theme="dark"] .home-hero .home-portrait {
   padding: 44px 0 0;
 
   /* the running commentary runs the full width, above the record panels */
-  #currently {
+  #currently,
+  #interests {
     grid-column: 1 / -1;
   }
 }

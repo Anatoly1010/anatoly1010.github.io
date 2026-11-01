@@ -59,6 +59,13 @@ redirect_from:
   <div class="panel__body">
     <ul class="panel-news">
       <li>
+        <span class="panel-news__date">2026–now</span>
+        <div class="panel-news__body">
+          <span class="panel-news__title">International Tomography Center</span>
+          <span class="panel-news__detail">Head of the Laboratory of Instrumentation and Experimental Methods</span>
+        </div>
+      </li>
+      <li>
         <span class="panel-news__date">2022–now</span>
         <div class="panel-news__body">
           <span class="panel-news__title">International Tomography Center</span>

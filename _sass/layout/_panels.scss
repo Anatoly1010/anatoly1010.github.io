@@ -461,6 +461,11 @@
     overflow-wrap: anywhere;
   }
 
+  .panel-specs__value--muted {
+    color: var(--global-text-color-3);
+    font-style: italic;
+  }
+
   /* row of panel buttons closing a spec panel */
   .panel-actions {
     display: flex;
@@ -547,7 +552,8 @@
 }
 
 /* blog: recent posts as cards, the rest as a list below */
-.post-grid {
+.post-grid,
+.panel-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
@@ -557,8 +563,47 @@
   }
 }
 
-.post-grid + .panel {
+.post-grid + .panel,
+.panel-grid + .panel,
+.archive > .panel + .panel-grid {
   margin-top: 16px;
+}
+
+/* side-by-side columns inside one panel body */
+.panel__body .panel-cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 6px 28px;
+  margin: 4px 0 6px;
+
+  &--media {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    align-items: start;
+
+    @media (max-width: 860px) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .panel-cols__col {
+    min-width: 0;
+  }
+
+  .panel-cols__title {
+    margin: 10px 0 4px;
+    padding: 0;
+    border: 0;
+    font-family: $monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--global-link-color);
+  }
+
+  .panel-specs__key {
+    width: 118px;
+  }
 }
 
 .post-card {
@@ -753,7 +798,94 @@
   }
 }
 
+/* featured panel, e.g. the head of the lab on the Team page */
+.panel--accent {
+  border-color: var(--global-border-strong-color);
+
+  .panel__head {
+    background: var(--global-accent-soft-color);
+
+    &::before {
+      opacity: 1;
+    }
+
+    .panel__glyph,
+    .panel__title {
+      color: var(--global-link-color);
+    }
+  }
+}
+
+.panel__body .panel-person {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding-top: 10px;
+
+  .panel-person__photo {
+    flex: none;
+    width: 132px;
+    height: 132px;
+    overflow: hidden;
+    background: var(--global-portrait-bg-color);
+    border: 1px solid var(--global-border-strong-color);
+    border-radius: 6px;
+    box-shadow: var(--global-shadow);
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .panel-person__text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  a.panel-person__name {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+
+    &,
+    &:visited {
+      color: var(--global-text-color);
+    }
+
+    &:hover {
+      color: var(--global-link-color);
+    }
+  }
+
+  .panel-person__role {
+    font-family: $monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--global-link-color);
+  }
+
+  .panel-person__bio {
+    margin: 6px 0 0;
+    max-width: 62ch;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--global-text-color-2);
+  }
+}
+
 @media (max-width: 420px) {
+  .panel__body .panel-person {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .panel__body .panel-news li,
   .panel__body .panel-specs li {
     flex-direction: column;
