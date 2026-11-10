@@ -25,41 +25,49 @@ motif_label: "cw spectrum"
   </div>
   <div class="panel__body">
     <p class="panel-desc">A multi-functional setup at the <a href="https://ieeexplore.ieee.org/document/7163372">Novosibirsk Free Electron Laser Facility</a>: three X-band EPR machines, pulsed, continuous wave, and time-resolved with a Lotis TII Nd:YAG laser. All three run on <a href="https://github.com/Anatoly1010/Atomize_ITC">Atomize_ITC</a>; the pulsed machine can also tune itself and measure unattended with <a href="https://anatoly1010.github.io/atomize_docs/projects/epr_auto/">epr_auto</a>.</p>
-    <ul class="panel-stats"><li><b>8.5–11.5</b><i>GHz range</i></li><li><b>300 W</b><i>Solid-state amplifier</i></li><li><b>3.2 ns</b><i>Pulse resolution</i></li><li><b>0.8 ns</b><i>AWG resolution</i></li></ul>
-    <div class="panel-cols">
+    <div class="panel-cols panel-cols--media">
       <div class="panel-cols__col">
-        <h3 class="panel-cols__title">Pulsed X-band</h3>
-        <ul class="panel-specs">
-        <li><span class="panel-specs__key">Pulse gen. / ADC / DAC</span><span class="panel-specs__value">Insys FM214x3GDA: 312.5 MHz TTL, 2.5 GHz ADC, 1.5 GHz DAC</span></li>
-        <li><span class="panel-specs__key">Microwave bridge</span><span class="panel-specs__value">Micran X-band v2</span></li>
-        <li><span class="panel-specs__key">Field</span><span class="panel-specs__value">BH15</span></li>
-        <li><span class="panel-specs__key">Temperature</span><span class="panel-specs__value">Lakeshore 335</span></li>
-      </ul>
+        <ul class="panel-stats"><li><b>8.5–11.5</b><i>GHz range</i></li><li><b>300 W</b><i>Solid-state amplifier</i></li><li><b>3.2 ns</b><i>Pulse resolution</i></li><li><b>0.8 ns</b><i>AWG resolution</i></li></ul>
+        <div class="panel-cols">
+          <div class="panel-cols__col">
+            <h3 class="panel-cols__title">Pulsed X-band</h3>
+            <ul class="panel-specs">
+            <li><span class="panel-specs__key">Pulse gen. / ADC / DAC</span><span class="panel-specs__value">Insys FM214x3GDA: 312.5 MHz TTL, 2.5 GHz ADC, 1.5 GHz DAC</span></li>
+            <li><span class="panel-specs__key">Microwave bridge</span><span class="panel-specs__value">Micran X-band v2</span></li>
+            <li><span class="panel-specs__key">Field</span><span class="panel-specs__value">BH15</span></li>
+            <li><span class="panel-specs__key">Temperature</span><span class="panel-specs__value">Lakeshore 335</span></li>
+          </ul>
+          </div>
+          <div class="panel-cols__col">
+            <h3 class="panel-cols__title">CW X-band</h3>
+            <ul class="panel-specs">
+            <li><span class="panel-specs__key">Lock-in</span><span class="panel-specs__value">Stanford Research SR-850</span></li>
+            <li><span class="panel-specs__key">Frequency counter</span><span class="panel-specs__value">Agilent 53131A</span></li>
+            <li><span class="panel-specs__key">Field</span><span class="panel-specs__value">BH15</span></li>
+            <li><span class="panel-specs__key">Temperature</span><span class="panel-specs__value">Lakeshore 335</span></li>
+          </ul>
+          </div>
+          <div class="panel-cols__col">
+            <h3 class="panel-cols__title">Time-resolved X-band</h3>
+            <ul class="panel-specs">
+            <li><span class="panel-specs__key">Laser</span><span class="panel-specs__value">Lotis TII Nd:YAG</span></li>
+            <li><span class="panel-specs__key">Oscilloscopes</span><span class="panel-specs__value">Keysight DSOX3034A, DSOX2012A</span></li>
+            <li><span class="panel-specs__key">Frequency counter</span><span class="panel-specs__value">Agilent 53131A</span></li>
+            <li><span class="panel-specs__key">Field</span><span class="panel-specs__value">BH15</span></li>
+            <li><span class="panel-specs__key">Temperature</span><span class="panel-specs__value">Lakeshore 335</span></li>
+            <li><span class="panel-specs__key">Gaussmeter</span><span class="panel-specs__value">Sibir 1 NMR</span></li>
+          </ul>
+          </div>
+        </div>
+        <div class="panel-actions">
+          <a class="panel-btn" href="https://anatoly1010.github.io/atomize_docs/projects/endstation/">Documentation</a>
+          <a class="panel-btn" href="https://anatoly1010.github.io/atomize_docs/projects/epr_auto/">epr_auto</a>
+        </div>
       </div>
-      <div class="panel-cols__col">
-        <h3 class="panel-cols__title">CW X-band</h3>
-        <ul class="panel-specs">
-        <li><span class="panel-specs__key">Lock-in</span><span class="panel-specs__value">Stanford Research SR-850</span></li>
-        <li><span class="panel-specs__key">Frequency counter</span><span class="panel-specs__value">Agilent 53131A</span></li>
-        <li><span class="panel-specs__key">Field</span><span class="panel-specs__value">BH15</span></li>
-        <li><span class="panel-specs__key">Temperature</span><span class="panel-specs__value">Lakeshore 335</span></li>
-      </ul>
-      </div>
-      <div class="panel-cols__col">
-        <h3 class="panel-cols__title">Time-resolved X-band</h3>
-        <ul class="panel-specs">
-        <li><span class="panel-specs__key">Laser</span><span class="panel-specs__value">Lotis TII Nd:YAG</span></li>
-        <li><span class="panel-specs__key">Oscilloscopes</span><span class="panel-specs__value">Keysight DSOX3034A, DSOX2012A</span></li>
-        <li><span class="panel-specs__key">Frequency counter</span><span class="panel-specs__value">Agilent 53131A</span></li>
-        <li><span class="panel-specs__key">Field</span><span class="panel-specs__value">BH15</span></li>
-        <li><span class="panel-specs__key">Temperature</span><span class="panel-specs__value">Lakeshore 335</span></li>
-        <li><span class="panel-specs__key">Gaussmeter</span><span class="panel-specs__value">Sibir 1 NMR</span></li>
-      </ul>
-      </div>
-    </div>
-    <div class="panel-actions">
-      <a class="panel-btn" href="https://anatoly1010.github.io/atomize_docs/projects/endstation/">Documentation</a>
-      <a class="panel-btn" href="https://anatoly1010.github.io/atomize_docs/projects/epr_auto/">epr_auto</a>
+      <figure class="panel-figure panel-figure--bottom">
+        <img src="{{ '/images/equipment/epr-endstation.jpg' | relative_url }}" alt="EPR endstation with its magnet, instrument racks and beamline at the Novosibirsk Free Electron Laser Facility" width="960" height="1280">
+        <figcaption>EPR spectroscopy endstation at the Novosibirsk Free Electron Laser Facility.</figcaption>
+      </figure>
     </div>
   </div>
 </section>

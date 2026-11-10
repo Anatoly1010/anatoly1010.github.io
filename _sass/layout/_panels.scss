@@ -395,6 +395,10 @@
     margin: 8px 0;
     text-align: center;
 
+    &--bottom {
+      align-self: end;
+    }
+
     img {
       display: block;
       width: auto;
