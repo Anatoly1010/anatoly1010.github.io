@@ -13,5 +13,5 @@ Introduction to magnetic resonance for graduate students.
 
 ### Useful Links, in russian
 
-- [Lecture videos](https://drive.google.com/drive/folders/1m5LXz4PuhUuuJ4GQJCteNwcSIm7kOm7E?usp=drive_link) 
+- [Lecture videos](https://disk.yandex.ru/d/HuqHncyen9VoFA)
 
