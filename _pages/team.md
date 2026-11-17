@@ -38,29 +38,30 @@ motif_label: "two-pulse echo"
   <div class="panel__body">
     {% assign members = site.data.team | where_exp: "m", "m.head != true" %}
     {% for member in members %}
-    {% unless member.placeholder %}
     <div class="panel-person">
       {% if member.photo %}
       <div class="panel-person__photo"><img src="{{ member.photo | relative_url }}" alt="Portrait of {{ member.name }}"></div>
+      {% else %}
+      <div class="panel-person__photo panel-person__photo--placeholder" role="img" aria-label="Photo placeholder for {{ member.name }}">
+        <svg viewBox="0 0 132 132" aria-hidden="true" focusable="false">
+          <circle cx="66" cy="43" r="23" />
+          <path d="M14 132v-12c0-27 21-44 52-44s52 17 52 44v12Z" />
+        </svg>
+      </div>
       {% endif %}
       <div class="panel-person__text">
+        {% if member.url %}
+        <a class="panel-person__name" href="{% if member.url contains '#' %}{{ member.url }}{% else %}{{ member.url | relative_url }}{% endif %}">{{ member.name }}</a>
+        {% else %}
         <span class="panel-person__name">{{ member.name }}</span>
+        {% endif %}
         <span class="panel-person__role">{{ member.role }}</span>
+        {% if member.bio %}
         <p class="panel-person__bio">{{ member.bio }}</p>
+        {% endif %}
       </div>
     </div>
-    {% endunless %}
     {% endfor %}
-    <ul class="panel-specs">
-      {% for member in members %}
-      {% if member.placeholder %}
-      <li>
-        <span class="panel-specs__key">{% if member.url %}<a href="{% if member.url contains '#' %}{{ member.url }}{% else %}{{ member.url | relative_url }}{% endif %}">{{ member.name }}</a>{% else %}{{ member.name }}{% endif %}</span>
-        <span class="panel-specs__value{% if member.placeholder %} panel-specs__value--muted{% endif %}">{{ member.role }}</span>
-      </li>
-      {% endif %}
-      {% endfor %}
-    </ul>
   </div>
 </section>
 
