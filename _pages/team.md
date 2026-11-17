@@ -36,13 +36,29 @@ motif_label: "two-pulse echo"
     <h2 class="panel__title">Members</h2>
   </div>
   <div class="panel__body">
+    {% assign members = site.data.team | where_exp: "m", "m.head != true" %}
+    {% for member in members %}
+    {% unless member.placeholder %}
+    <div class="panel-person">
+      {% if member.photo %}
+      <div class="panel-person__photo"><img src="{{ member.photo | relative_url }}" alt="Portrait of {{ member.name }}"></div>
+      {% endif %}
+      <div class="panel-person__text">
+        <span class="panel-person__name">{{ member.name }}</span>
+        <span class="panel-person__role">{{ member.role }}</span>
+        <p class="panel-person__bio">{{ member.bio }}</p>
+      </div>
+    </div>
+    {% endunless %}
+    {% endfor %}
     <ul class="panel-specs">
-      {% assign members = site.data.team | where_exp: "m", "m.head != true" %}
       {% for member in members %}
+      {% if member.placeholder %}
       <li>
         <span class="panel-specs__key">{% if member.url %}<a href="{% if member.url contains '#' %}{{ member.url }}{% else %}{{ member.url | relative_url }}{% endif %}">{{ member.name }}</a>{% else %}{{ member.name }}{% endif %}</span>
         <span class="panel-specs__value{% if member.placeholder %} panel-specs__value--muted{% endif %}">{{ member.role }}</span>
       </li>
+      {% endif %}
       {% endfor %}
     </ul>
   </div>
