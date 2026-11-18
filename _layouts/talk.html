@@ -41,11 +41,18 @@ layout: default
           </div>
           <div class="panel__body">
             <ul class="panel-specs">
+              {% assign speaker = site.data.team | where: "id", page.speaker | first %}
+              {% if speaker %}
+                <li><span class="panel-specs__key">Speaker</span><span class="panel-specs__value"><a href="{{ speaker.url | relative_url }}">{{ speaker.name }}</a></span></li>
+              {% endif %}
               {% if page.type %}
                 <li><span class="panel-specs__key">Format</span><span class="panel-specs__value">{{ page.type }}</span></li>
               {% endif %}
               {% if page.venue %}
                 <li><span class="panel-specs__key">Venue</span><span class="panel-specs__value">{{ page.venue }}</span></li>
+              {% endif %}
+              {% if page.institution %}
+                <li><span class="panel-specs__key">Institution</span><span class="panel-specs__value">{{ page.institution }}</span></li>
               {% endif %}
               {% if page.location %}
                 <li><span class="panel-specs__key">Location</span><span class="panel-specs__value">{{ page.location }}</span></li>

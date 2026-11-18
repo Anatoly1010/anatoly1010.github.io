@@ -40,7 +40,9 @@ motif_label: "two-pulse echo"
     {% for member in members %}
     <div class="panel-person">
       {% if member.photo %}
-      <div class="panel-person__photo"><img src="{{ member.photo | relative_url }}" alt="Portrait of {{ member.name }}"></div>
+      <div class="panel-person__photo">
+        <img src="{{ member.photo | relative_url }}" alt="Portrait of {{ member.name }}"{% if member.photo_zoom %} style="transform: scale({{ member.photo_zoom }});"{% endif %}>
+      </div>
       {% else %}
       <div class="panel-person__photo panel-person__photo--placeholder" role="img" aria-label="Photo placeholder for {{ member.name }}">
         <svg viewBox="0 0 132 132" aria-hidden="true" focusable="false">

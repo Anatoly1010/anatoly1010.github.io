@@ -24,7 +24,7 @@ motif_label: "cw spectrum"
     <span class="panel__count">Novosibirsk FEL</span>
   </div>
   <div class="panel__body">
-    <p class="panel-desc">A multi-functional setup at the <a href="https://ieeexplore.ieee.org/document/7163372">Novosibirsk Free Electron Laser Facility</a>: three X-band EPR machines, pulsed, continuous wave, and time-resolved with a Lotis TII Nd:YAG laser. All three run on <a href="https://github.com/Anatoly1010/Atomize_ITC">Atomize_ITC</a>; the pulsed machine can also tune itself and measure unattended with <a href="https://anatoly1010.github.io/atomize_docs/projects/epr_auto/">epr_auto</a>.</p>
+    <p class="panel-desc">A multi-functional setup at the <a href="https://ieeexplore.ieee.org/document/7163372">Novosibirsk Free Electron Laser Facility</a>: three X-band EPR machines, pulsed, continuous wave, and time-resolved with a Lotis TII Nd:YAG laser. All three run on <a href="https://github.com/Anatoly1010/Atomize_ITC">Atomize_ITC</a>; the pulsed machine can also tune itself and measure unattended with <a href="https://anatoly1010.github.io/atomize_docs/projects/epr_auto/">epr_auto</a>. Developed in collaboration with Sergey Veber and Nikolay Isaev.</p>
     <div class="panel-cols panel-cols--media">
       <div class="panel-cols__col">
         <ul class="panel-stats"><li><b>8.5–11.5</b><i>GHz range</i></li><li><b>300 W</b><i>Solid-state amplifier</i></li><li><b>3.2 ns</b><i>Pulse resolution</i></li><li><b>0.8 ns</b><i>AWG resolution</i></li></ul>
@@ -82,7 +82,7 @@ motif_label: "cw spectrum"
   </div>
   <div class="panel__body">
     <ul class="panel-stats"><li><b>8.5–11.5</b><i>GHz range</i></li><li><b>300 W</b><i>Solid-state amplifier</i></li><li><b>2 ns</b><i>Pulse resolution</i></li></ul>
-    <p class="panel-desc">A broadband spectrometer for high-throughput measurements, with a control center built on Atomize: presets for standard experiments, interactive pulse tables with phase cycling and shaped pulses, on-the-fly Fourier transform, and non-uniform sampling.</p>
+    <p class="panel-desc">A broadband spectrometer for high-throughput measurements, with a control center built on Atomize: presets for standard experiments, interactive pulse tables with phase cycling and shaped pulses, on-the-fly Fourier transform, and non-uniform sampling. Developed in collaboration with Sergey Veber and Nikolay Isaev.</p>
       <ul class="panel-specs">
         <li><span class="panel-specs__key">Digitizer</span><span class="panel-specs__value">Spectrum M4i-4450-x8 PCIe</span></li>
         <li><span class="panel-specs__key">DAC</span><span class="panel-specs__value">Spectrum M4i.6631-x8 PCIe</span></li>
@@ -107,7 +107,7 @@ motif_label: "cw spectrum"
   </div>
   <div class="panel__body">
     <ul class="panel-stats"><li><b>33–35.5</b><i>GHz range</i></li><li><b>200 W</b><i>Solid-state amplifier</i></li><li><b>4 ns</b><i>Pulse resolution</i></li></ul>
-    <p class="panel-desc">Built on the same control center as the X-band machine, with its own hardware and a 1.25 GS/s DAC for shaped microwave pulses.</p>
+    <p class="panel-desc">Built on the same control center as the X-band machine, with its own hardware and a 1.25 GS/s DAC for shaped microwave pulses. Developed in collaboration with Sergey Veber and Nikolay Isaev.</p>
       <ul class="panel-specs">
         <li><span class="panel-specs__key">DAC</span><span class="panel-specs__value">Spectrum M4i.6631-x8 PCIe</span></li>
         <li><span class="panel-specs__key">Pulse generator</span><span class="panel-specs__value">Micran PCIe, based on Insys FMC126P</span></li>

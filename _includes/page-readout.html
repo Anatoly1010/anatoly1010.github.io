@@ -1,5 +1,6 @@
 {% comment %}top-right readout for an archive page: one bar per year of the collection named in page.readout_series{% endcomment %}
 {% assign series = site[page.readout_series] %}
+{% if page.talk_speaker %}{% assign series = series | where: "speaker", page.talk_speaker %}{% endif %}
 {% if series and series.size > 0 %}
   {% assign groups = series | group_by_exp: "item", "item.date | date: '%Y'" | sort: "name" %}
   {% assign first = groups.first.name | plus: 0 %}

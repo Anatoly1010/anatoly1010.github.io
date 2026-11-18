@@ -1,0 +1,117 @@
+{% assign mapped_talks = include.talks | where_exp: "talk", "talk.lat" | where_exp: "talk", "talk.lng" %}
+{% assign locations = mapped_talks | group_by_exp: "talk", "talk.lat | append: ',' | append: talk.lng" %}
+{% if locations.size > 0 %}
+<script src="https://unpkg.com/d3@7/dist/d3.min.js"></script>
+<script src="https://unpkg.com/topojson-client@3/dist/topojson-client.min.js"></script>
+
+<section class="panel">
+  <div class="panel__head">
+    <i class="panel__glyph fa-solid fa-location-dot" aria-hidden="true"></i>
+    <h2 class="panel__title">Where I have spoken</h2>
+    <span class="panel__count">{{ locations.size }} location{% if locations.size != 1 %}s{% endif %}</span>
+  </div>
+  <div class="panel__body panel__body--flush">
+    <div id="talkmap" class="talk-map">
+      <div class="talk-map__tooltip" id="talkmap-tip" hidden></div>
+    </div>
+  </div>
+  {% for group in locations %}
+    {% if group.size > 1 %}
+    <div class="panel__body">
+      <details id="talk-map-location-{{ forloop.index }}">
+        <summary>{{ group.items.first.location | escape }} ({{ group.size }} presentations)</summary>
+        <ul>
+          {% for talk in group.items %}
+          <li><a href="{{ talk.url | relative_url }}">{{ talk.title | escape }}</a></li>
+          {% endfor %}
+        </ul>
+      </details>
+    </div>
+    {% endif %}
+  {% endfor %}
+</section>
+
+<script>
+(function () {
+  var locations = [
+    {% for group in locations %}
+    {% assign talk = group.items.first %}
+    {
+      lat: {{ talk.lat | jsonify }},
+      lng: {{ talk.lng | jsonify }},
+      {% if group.size > 1 %}
+      label: {{ talk.location | append: ' (' | append: group.size | append: ' presentations)' | jsonify | replace: '<', '\u003c' }},
+      url: '#talk-map-location-{{ forloop.index }}'
+      {% else %}
+      {% assign month = talk.date | date: '%B %Y' %}
+      {% assign label = talk.title %}
+      {% if talk.venue %}{% assign label = label | append: ' · ' | append: talk.venue %}{% endif %}
+      {% if talk.location %}{% assign label = label | append: ' · ' | append: talk.location %}{% endif %}
+      label: {{ label | append: ' · ' | append: month | jsonify | replace: '<', '\u003c' }},
+      url: {{ talk.url | relative_url | jsonify | replace: '<', '\u003c' }}
+      {% endif %}
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+  var width = 960, height = 480;
+  var container = document.getElementById('talkmap');
+  var tip = document.getElementById('talkmap-tip');
+
+  function showMapError() {
+    var message = document.createElement('p');
+    message.className = 'panel-desc';
+    message.textContent = 'The map could not be loaded. See the presentation list for details.';
+    container.replaceChildren(message);
+  }
+
+  if (!window.d3 || !window.topojson) {
+    showMapError();
+    return;
+  }
+
+  var svg = d3.select(container).append('svg')
+    .attr('viewBox', '0 0 ' + width + ' ' + height)
+    .attr('class', 'talk-map__svg');
+  var projection = d3.geoNaturalEarth1().scale(180).translate([width / 2, height / 2]);
+  var path = d3.geoPath(projection);
+
+  d3.json('https://unpkg.com/world-atlas@2/countries-110m.json').then(function (world) {
+    var countries = topojson.feature(world, world.objects.countries);
+    svg.append('g').attr('class', 'talk-map__land')
+      .selectAll('path').data(countries.features).enter()
+      .append('path').attr('d', path);
+    svg.append('path')
+      .datum(topojson.mesh(world, world.objects.countries, function (a, b) { return a !== b; }))
+      .attr('class', 'talk-map__border').attr('d', path);
+    var markers = svg.append('g').attr('class', 'talk-map__markers');
+
+    locations.forEach(function (location) {
+      var point = projection([location.lng, location.lat]);
+      markers.append('circle').attr('cx', point[0]).attr('cy', point[1]).attr('r', 4.5)
+        .attr('class', 'talk-map__dot-halo');
+      var link = markers.append('a').attr('href', location.url).attr('aria-label', location.label);
+      link.append('circle').attr('cx', point[0]).attr('cy', point[1]).attr('r', 4)
+        .attr('class', 'talk-map__dot').style('cursor', 'pointer')
+        .on('mousemove', function (event) {
+          var rect = container.getBoundingClientRect();
+          var x = event.clientX - rect.left + 14;
+          if (x + 240 > rect.width) x -= 258;
+          tip.textContent = location.label;
+          tip.style.left = Math.max(0, x) + 'px';
+          tip.style.top = event.clientY - rect.top + 14 + 'px';
+          tip.hidden = false;
+        })
+        .on('mouseout', function () { tip.hidden = true; });
+      if (location.url.charAt(0) === '#') {
+        link.on('click', function (event) {
+          event.preventDefault();
+          var details = document.getElementById(location.url.slice(1));
+          details.open = true;
+          details.querySelector('summary').focus();
+        });
+      }
+    });
+  }).catch(showMapError);
+})();
+</script>
+{% endif %}

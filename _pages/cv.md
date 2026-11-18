@@ -278,7 +278,8 @@ redirect_from:
   </div>
   <div class="panel__body">
     <ul class="panel-news">
-      {% for post in site.talks reversed %}
+      {% assign cv_talks = site.talks | where: "speaker", "melnikov" %}
+      {% for post in cv_talks reversed %}
         {% include archive-single-talk-list.html %}
       {% endfor %}
     </ul>

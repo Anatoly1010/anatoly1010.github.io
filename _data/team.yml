@@ -1,4 +1,5 @@
 - name: "Anatoly Melnikov, Ph.D."
+  id: melnikov
   role: "Head of the Laboratory"
   url: /team/melnikov/
   head: true
@@ -6,13 +7,19 @@
   bio: "Pulsed EPR spectroscopy and terahertz radiation applied to single-molecule magnets, and the instruments and open-source software that run the experiments. Also Associate Professor at Novosibirsk State University."
 
 - name: "Alexey Matyash"
+  id: matyash
   role: "Laborant"
+  url: /team/matyash/
   photo: /images/alexey-matyash-white.png
-  bio: "Also a fifth-year specialist student at Novosibirsk State University."
+  photo_zoom: 1.12
+  bio: "Studies spin relaxation in trityl radicals and performs quantum-chemical calculations. Final-year Specialist student in Theoretical and Applied Chemistry at Novosibirsk State University."
+  email: "matyash@tomo.nsc.ru"
+  orcid: "https://orcid.org/0009-0008-1841-7775"
 
 - name: "Anastasia Ishchenko"
   role: "Junior Research Fellow"
-  bio: "Also a first-year PhD student at Novosibirsk State University."
+  photo: /images/anastasia-ishchenko-white.png
+  bio: "Pulsed EPR spectroscopy and terahertz-driven spin dynamics in single-molecule magnets. Also a first-year PhD student at Novosibirsk State University."
 
 - name: "Your name here"
   role: "Student, PhD student or postdoc — see open positions"

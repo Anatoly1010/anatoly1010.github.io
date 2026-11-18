@@ -294,6 +294,7 @@ defaults:
       layout: talk
       author_profile: false
       share: true
+      speaker: melnikov
 
 
 # Sass/SCSS

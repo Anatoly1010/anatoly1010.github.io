@@ -150,6 +150,15 @@ $signal-cycle: $signal-period * 3;
     img.home-portrait__light {
       display: block;
     }
+
+    &--contain {
+      background: var(--global-portrait-bg-color);
+
+      img {
+        object-fit: contain;
+        object-position: center;
+      }
+    }
   }
 }
 
@@ -794,6 +803,10 @@ html[data-theme="dark"] .home-hero .home-portrait {
   gap: 16px;
   /* clears the closing rule below the trace, then a grid gap before the panels */
   padding: 44px 0 0;
+
+  &--single {
+    grid-template-columns: minmax(0, 1fr);
+  }
 
   /* the running commentary runs the full width, above the record panels */
   #currently,
