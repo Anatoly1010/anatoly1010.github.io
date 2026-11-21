@@ -248,6 +248,31 @@ figure {
       width: 100%;
     }
   }
+
+  &.photo-collage {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5em;
+
+    @include breakpoint($small) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    > a {
+      width: auto;
+    }
+
+    img {
+      display: block;
+      aspect-ratio: 1;
+      object-fit: cover;
+      margin-bottom: 0;
+    }
+
+    figcaption {
+      grid-column: 1 / -1;
+    }
+  }
 }
 
 /* Figure captions */
